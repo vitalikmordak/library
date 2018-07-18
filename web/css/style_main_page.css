@@ -4,6 +4,7 @@ ul.nav a, ul.nav a:visited {
     text-decoration: none;
     color: #000;
 }
+
 body {
     font: 100%/1.4 "Roboto", sans-serif;
     background-color: #76b852;
@@ -16,6 +17,7 @@ ul, ol, dl {
     padding: 0;
     margin: 0;
 }
+
 h1, h2, h3, h4, h5, h6, p {
     margin-top: 0;
     padding-right: 15px;
@@ -26,10 +28,10 @@ a img {
     border: none;
 }
 
-
 a:link {
     color: #414958;
 }
+
 a:visited {
     color: #4E5869;
 }
@@ -49,7 +51,6 @@ a:hover, a:active, a:focus {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-
 .header {
     background-color: #FFFFFF;
 }
@@ -60,21 +61,23 @@ a:hover, a:active, a:focus {
     padding-bottom: 10px;
     margin: 10px;
 }
+
 .content {
     padding: 10px 0;
     width: 65%;
     float: left;
 }
 
-
 ul.nav {
     list-style: none;
 
     margin-bottom: 15px;
 }
+
 ul.nav li {
 
 }
+
 ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     background-color: #FFFFFF;
     color: #43A047;
@@ -88,6 +91,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     margin: 0 auto;
     padding-top: 15px;
 }
+
 .search_form_input {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -98,6 +102,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     box-sizing: border-box;
     font-size: 14px;
 }
+
 .search_form_button {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -106,11 +111,10 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
     cursor: pointer;
 }
-.search_form_button:hover,.form_button:active,.form_button:focus {
+
+.search_form_button:hover, .form_button:active, .form_button:focus {
     background: #43A047;
     cursor: pointer;
 }
@@ -123,9 +127,10 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     font-size: 14px;
 }
 
-.logo{
+.logo {
     text-align: left;
 }
+
 .footer {
     color: #ffffff;
     height: 50px;
@@ -133,10 +138,13 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     margin: 50px;
     margin-bottom: 0;
 }
+
 .book_list {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;}
+    flex-wrap: wrap;
+}
+
 .book_image img {
     width: 150px;
     display: block;
@@ -144,23 +152,36 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
     margin-right: auto;
     height: 220px;
 }
+
 .book_title {
     text-align: center;
     color: #a1c057;
     font-weight: bold;
     font-size: 16px;
 }
+
 .book_info {
     margin: 0 30px;
     float: left;
 }
+
 .book_details {
     font-size: 14px;
 }
+
 .letters {
     text-align: center;
     font-weight: 600;
 }
-.letters a.active {color: red;}
-.letters a {text-decoration: none;}
-.welcome { float: right;}
+
+.letters a.active {
+    color: red;
+}
+
+.letters a {
+    text-decoration: none;
+}
+
+.welcome {
+    float: right;
+}

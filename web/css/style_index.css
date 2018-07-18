@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 body {
     font: 100%/1.4 "Roboto", sans-serif;
     /*font-size: 14px;*/
@@ -7,6 +8,7 @@ body {
     margin: 100px;
     background-color: #76b852;
 }
+
 .main {
     width: 1000px;
     height: auto;
@@ -15,6 +17,7 @@ body {
     background-color: #ffffff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 .title {
     color: #000;
     text-align: center;
@@ -27,6 +30,7 @@ body {
     padding-right: 50px;
     text-align: center;
 }
+
 .login_form {
     position: relative;
     z-index: 1;
@@ -38,6 +42,7 @@ body {
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
 .login_form_input {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -49,11 +54,13 @@ body {
     box-sizing: border-box;
     font-size: 14px;
 }
+
 .login_div {
     width: 360px;
     padding: 4% 0 0;
     margin: auto;
 }
+
 .form_button {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -63,13 +70,13 @@ body {
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
     cursor: pointer;
 }
-.form_button:hover,.form_button:active,.form_button:focus {
+
+.form_button:hover, .form_button:active, .form_button:focus {
     background: #43A047;
 }
+
 .footer {
     color: #ffffff;
     height: 50px;
@@ -77,6 +84,7 @@ body {
     margin: 50px;
     margin-bottom: 0;
 }
+
 .content {
     height: auto;
 }
