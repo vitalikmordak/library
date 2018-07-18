@@ -95,12 +95,16 @@ public class BookList {
                 "inner join author a on b.author_id=a.id " +
                 "inner join genre g on b.genre_id=g.id " +
                 "inner join publisher p on b.publisher_id=p.id ");
-        if (type == SearchType.AUTHOR) {
-            sqlRequest.append("where lower(a.fio) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
-        } else if (type == SearchType.TITLE) {
-            sqlRequest.append("where lower(b.name) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
+        try {
+            if (type == SearchType.AUTHOR) {
+                sqlRequest.append("where lower(a.fio) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
+            } else if (type == SearchType.TITLE) {
+                sqlRequest.append("where lower(b.name) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
+            }
+            sqlRequest.append("limit 0,5");
+        } catch (NullPointerException e) {
+            Logger.getLogger(GenreList.class.getName()).log(Level.SEVERE, "Search string is empty", e);
         }
-        sqlRequest.append("limit 0,5");
         return getBooks(sqlRequest.toString());
     }
 }

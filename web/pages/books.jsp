@@ -53,7 +53,7 @@
             <br><strong>Number of pages:</strong> <%=book.getPageCount()%>
             <br><strong>The year of publishing:</strong> <%=book.getPublishDate()%>
             <br><strong>Author:</strong> <%=book.getAuthor()%>
-            <p style="margin: 10px;"><a href="#">Read online</a></p>
+            <p style="margin: 10px;"><a href="<%=request.getContextPath()%>/PdfContent?index=<%=list.indexOf(book)%>">Read online</a></p>
         </div>
     </div>
     <%}%>
