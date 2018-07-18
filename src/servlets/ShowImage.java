@@ -21,19 +21,16 @@ public class ShowImage extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
     }
-    protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("image/jpg");
-        OutputStream out= resp.getOutputStream();
 
-        try {
+        try (OutputStream out = resp.getOutputStream()) {
             int index = Integer.valueOf(req.getParameter("index"));
 
             ArrayList<Book> list = (ArrayList<Book>) req.getSession(false).getAttribute("currentBookList");
             Book book = list.get(index);
             resp.setContentLength(book.getImage().length);
             out.write(book.getImage());
-        } finally {
-            out.close();
         }
     }
 
