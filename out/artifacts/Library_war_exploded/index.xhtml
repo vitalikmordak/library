@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <!--suppress ELSpecValidationInJSP -->
+    <title>#{msg.welcome_title}</title>
+    <h:outputStylesheet library="css" name="style_index.css"/>
+</h:head>
+<h:body>
+    <div class="main">
+        <div class="content">
+            <p class="title"><h:graphicImage library="images" name="lib.png" width="76" height="77"/></p>
+            <p class="title">#{msg.index_title}</p>
+            <p class="text">#{msg.welcome_text}</p>
+            <p class="text">#{msg.welcome_text2}</p>
+        </div>
+        <div class="login_div">
+            <h:form styleClass="login_form">
+                <p class="title">#{msg.login_form_title}</p>
+                <h:inputText styleClass="login_form_input" id="username" value="#{user.username}"/><br/>
+                <h:inputSecret styleClass="login_form_input" id="password" value="#{user.password}"/><br/>
+                <h:commandButton styleClass="form_button" id="login" value="LOGIN"/>
+            </h:form>
+            <!--<form class="login_form" name="username" action="../pages/main.jsp" method="post">-->
+            <!--<p class="title">Login Form</p>-->
+            <!--<input class="login_form_input" type="text" name="username" placeholder="username" size="20" style="margin-bottom: 10px;"/><br/>-->
+            <!--<input class="login_form_input" type="password" name="password" placeholder="password" size="20" style="margin-bottom: 10px;"/><br/>-->
+            <!--<input type="submit" class="form_button" value="LOGIN"/>-->
+            <!--</form>-->
+        </div>
+
+    </div>
+    <div class="footer"> #{msg.author_info} </div>
+</h:body>
+</html>
