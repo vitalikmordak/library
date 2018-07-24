@@ -6,8 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="178eb35c-0c25-4541-817e-296fd4420877" name="Default" comment="" />
     <list id="4e53ea55-3a97-48fb-b4e9-f8fdbb509b17" name="add session check by Filter and redirect page to index.jsp" comment="" />
+    <list default="true" id="178eb35c-0c25-4541-817e-296fd4420877" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="../../Java/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,16 +47,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="faces-config.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider" />
-        </entry>
-      </file>
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/User.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -84,13 +74,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="beans.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="beans.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/beans.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Library.iml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Library.iml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="CheckSessionFilter.java" pinned="false" current-in-tab="false">
@@ -509,7 +504,7 @@
       <workItem from="1532333936515" duration="84000" />
       <workItem from="1532343777072" duration="9110000" />
       <workItem from="1532371619491" duration="652000" />
-      <workItem from="1532418996446" duration="2123000" />
+      <workItem from="1532418996446" duration="2803000" />
     </task>
     <task id="LOCAL-00001" summary="Prototype of online library: Tomcat with MySQL pool connection, JSP, Servlets">
       <created>1531595092038</created>
@@ -599,7 +594,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134891000" />
+    <option name="totallyTimeSpent" value="135571000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -614,7 +609,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5074627" side_tool="true" weight="0.31601733" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5079957" side_tool="true" visible="true" weight="0.31601733" />
       <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.3270073" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.32932165" />
       <window_info anchor="right" id="CDI" order="4" weight="0.32894737" />
@@ -631,7 +626,7 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" sideWeight="0.49946696" weight="0.3270073" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49253732" visible="true" weight="0.31601733" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49200428" visible="true" weight="0.31601733" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49473685" weight="0.44379562" />
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49736843" weight="0.329927" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49338624" visible="true" weight="0.19669509" />
@@ -874,9 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -984,6 +976,9 @@
           <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library.iml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
