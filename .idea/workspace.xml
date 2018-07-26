@@ -6,94 +6,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="178eb35c-0c25-4541-817e-296fd4420877" name="Default" comment="add Validator">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validators/LoginValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/pages/books.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Library_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c85d504d-7eff-41d1-8954-0029f858d504.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javaee_api_7_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_faces_2_3_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/META-INF/context.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/beans.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/Author.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/AuthorList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/BookList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/Genre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/GenreList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/beans/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/db/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/enums/SearchType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/filters/CheckSessionFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/nls/messages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/nls/messages_en_US.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/nls/messages_ru_RU.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/servlets/PdfContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/classes/servlets/ShowImage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/faces-config.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/jspf/footer.jspf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/jspf/header.jspf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/jspf/left_menu.jspf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/css/style_index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/css/style_main_page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/images/lib.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/images/search_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/index.xhtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/pages/books.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/pages/main.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/resources/css/style_index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/resources/css/style_main_page.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/resources/images/lib.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/resources/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Library_war_exploded/resources/images/search_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/Author.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/AuthorList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/Book.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/BookList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/Genre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/GenreList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/beans/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/db/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/enums/SearchType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/filters/CheckSessionFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/nls/messages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/nls/messages_en_US.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/nls/messages_ru_RU.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/servlets/PdfContent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Library/servlets/ShowImage.class" beforeDir="false" />
+    <list default="true" id="178eb35c-0c25-4541-817e-296fd4420877" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="4e53ea55-3a97-48fb-b4e9-f8fdbb509b17" name="add session check by Filter and redirect page to index.jsp" comment="" />
-    <ignored path="out/" />
-    <ignored path=".idea/" />
-    <ignored path="Library.iml" />
-    <manually-removed-from-ignored>
-      <directory path="../../Java/" />
-      <directory path="$PROJECT_DIR$/out/" />
-    </manually-removed-from-ignored>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="../../Java/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" show_ignored="true">
+  <component name="ChangesViewManager">
     <option name="groupingKeys">
       <option value="directory" />
       <option value="module" />
@@ -121,23 +47,13 @@
     </expand>
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1969871833">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.36" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/beans/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="51">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,89 +61,74 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="messages_ru_RU.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nls/messages_ru_RU.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="ResourceBundle" />
+        </entry>
+      </file>
+      <file leaf-file-name="index.xhtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            <state relative-caret-position="343">
+              <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/resources/css/style_index.css">
+      <file leaf-file-name="beans.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/beans.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="92" column="23" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
+            <state relative-caret-position="119">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/pages/books.xhtml">
+      <file leaf-file-name="Library.iml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Library.iml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="CheckSessionFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/filters/CheckSessionFilter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
-          <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/validators/LoginValidator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" column="84" selection-start-line="22" selection-start-column="84" selection-end-line="22" selection-end-column="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nls/messages.properties">
-          <provider selected="true" editor-type-id="ResourceBundle" />
-          <provider editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/nls/messages_en_US.properties">
-          <provider editor-type-id="ResourceBundle" />
+      <file leaf-file-name="messages.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nls/messages.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="10" selection-start-line="4" selection-end-line="5" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+          <provider editor-type-id="ResourceBundle" />
+        </entry>
+      </file>
+      <file leaf-file-name="messages_en_US.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/nls/messages_en_US.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="ResourceBundle" />
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -240,9 +141,9 @@
         <option value="Enum" />
         <option value="CSS File" />
         <option value="Jsp File" />
+        <option value="XHTML File" />
         <option value="cdi.beans_1_1" />
         <option value="Class" />
-        <option value="XHTML File" />
       </list>
     </option>
   </component>
@@ -282,8 +183,8 @@
     <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="library" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/web/pages/main.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/web/index.xhtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web/pages/main.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -317,22 +218,19 @@
         <option value="$PROJECT_DIR$/web/pages/books.jsp" />
         <option value="$PROJECT_DIR$/src/servlets/ShowImage.java" />
         <option value="$PROJECT_DIR$/web/css/style_main_page.css" />
+        <option value="$PROJECT_DIR$/web/css/style_index.css" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/nls/messages_ru_RU.properties" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/faces-config.xml" />
         <option value="$PROJECT_DIR$/web/resources/index.xhtml" />
         <option value="$PROJECT_DIR$/src/filters/CheckSessionFilter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/beans/User.java" />
-        <option value="$PROJECT_DIR$/src/nls/messages_en_US.properties" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/faces-config.xml" />
-        <option value="$PROJECT_DIR$/src/validators/LoginValidator.java" />
-        <option value="$PROJECT_DIR$/web/css/style_index.css" />
-        <option value="$PROJECT_DIR$/src/beans/User.java" />
+        <option value="$PROJECT_DIR$/src/nls/messages_en_US.properties" />
         <option value="$PROJECT_DIR$/src/nls/messages.properties" />
+        <option value="$PROJECT_DIR$/src/beans/User.java" />
         <option value="$PROJECT_DIR$/web/index.xhtml" />
-        <option value="$PROJECT_DIR$/web/resources/css/style_index.css" />
-        <option value="$PROJECT_DIR$/web/pages/books.xhtml" />
       </list>
     </option>
   </component>
@@ -365,6 +263,9 @@
       <select />
     </treeState>
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="481" />
     <option name="y" value="227" />
@@ -377,6 +278,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -392,31 +296,33 @@
             <path>
               <item name="Library" type="b2602c69:ProjectViewProjectNode" />
               <item name="Library" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="beans" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Library" type="b2602c69:ProjectViewProjectNode" />
               <item name="Library" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="XHTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532600850209" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Library.iml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lib/javax.faces-2.3.0.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -424,19 +330,19 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Java\Library\web\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Java\Library\web" />
       <recent name="D:\Java\Library\web\resources" />
       <recent name="D:\Java\Library\web\pages" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Java\Library\web\images" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -454,23 +360,44 @@
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
       <properties />
       <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="Tomcat EE" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 8.5.20" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -537,8 +464,7 @@
           <option name="PROGRAM_PARAMETERS" value="" />
         </SHUTDOWN>
       </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
+      <method>
         <option name="BuildArtifacts" enabled="true">
           <artifact name="Library:war exploded" />
         </option>
@@ -581,12 +507,7 @@
       <workItem from="1532333936515" duration="84000" />
       <workItem from="1532343777072" duration="9110000" />
       <workItem from="1532371619491" duration="652000" />
-      <workItem from="1532418996446" duration="4502000" />
-      <workItem from="1532453399896" duration="6195000" />
-      <workItem from="1532503091317" duration="4308000" />
-      <workItem from="1532532794195" duration="1205000" />
-      <workItem from="1532590374339" duration="8845000" />
-      <workItem from="1532599632901" duration="1119000" />
+      <workItem from="1532418996446" duration="4116000" />
     </task>
     <task id="LOCAL-00001" summary="Prototype of online library: Tomcat with MySQL pool connection, JSP, Servlets">
       <created>1531595092038</created>
@@ -693,25 +614,11 @@
       <option name="project" value="LOCAL" />
       <updated>1532423847376</updated>
     </task>
-    <task id="LOCAL-00016" summary="starting migrate from JSP to JSF with CDI">
-      <created>1532423952222</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1532423952222</updated>
-    </task>
-    <task id="LOCAL-00017" summary="add Validator">
-      <created>1532597603159</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1532597603159</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158942000" />
+    <option name="totallyTimeSpent" value="136884000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -725,80 +632,75 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49367088" visible="true" weight="0.20735608" />
-      <window_info id="Structure" order="1" sideWeight="0.5063291" side_tool="true" weight="0.19669509" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.50661373" side_tool="true" weight="0.18017058" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49473685" weight="0.44372293" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.45724908" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.32575756" />
-      <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.3270073" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49736843" weight="0.32900432" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5090618" side_tool="true" visible="true" weight="0.30552545" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4989339" weight="0.32554746" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49946696" weight="0.3270073" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="13" sideWeight="0.49093816" visible="true" weight="0.30552545" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.3002364" />
-      <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.32909605" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24912281" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32889125" />
-      <window_info anchor="right" id="Database" order="6" weight="0.25054705" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="CDI" order="9" weight="0.32889125" />
-      <window_info anchor="right" id="Bean Validation" order="10" weight="0.32889125" />
-      <window_info anchor="right" id="JSF" order="11" weight="0.32942432" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5079957" side_tool="true" visible="true" weight="0.31601733" />
+      <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.3270073" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.32932165" />
+      <window_info anchor="right" id="CDI" order="4" weight="0.32894737" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="3" weight="0.25054705" />
+      <window_info id="Structure" order="1" sideWeight="0.5063291" side_tool="true" weight="0.19669509" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24912281" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45724908" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.32627118" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" sideWeight="0.49946696" weight="0.3270073" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.49200428" visible="true" weight="0.31601733" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49473685" weight="0.44379562" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49736843" weight="0.329927" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49367088" visible="true" weight="0.19669509" />
+      <window_info anchor="right" id="Bean Validation" order="4" weight="0.32894737" />
+      <window_info id="Web" order="2" sideWeight="0.50661373" side_tool="true" weight="0.18017058" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="7" sideWeight="0.4989339" weight="0.32554746" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Database Console" order="8" weight="0.3002364" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32909605" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="JSF" order="5" weight="0.32982457" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49367088" visible="true" weight="0.20522387" />
-      <window_info id="Structure" order="1" sideWeight="0.5063291" side_tool="true" weight="0.19669509" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3295063" />
       <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3295063" />
       <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.50661373" side_tool="true" weight="0.18017058" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49473685" visible="true" weight="0.44372293" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.45724908" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.32575756" />
-      <window_info anchor="bottom" id="Application Servers" order="7" sideWeight="0.49946696" weight="0.3270073" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49736843" weight="0.329927" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5079957" side_tool="true" weight="0.31601733" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4989339" weight="0.32554746" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" sideWeight="0.49946696" weight="0.3270073" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49200428" weight="0.31601733" />
-      <window_info anchor="bottom" id="Database Console" order="14" weight="0.3002364" />
-      <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.32909605" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24912281" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32889125" />
-      <window_info anchor="right" id="Database" order="6" weight="0.25054705" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2549234" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="CDI" order="9" weight="0.32889125" />
-      <window_info anchor="right" id="Bean Validation" order="10" weight="0.32889125" />
-      <window_info anchor="right" id="JSF" order="11" weight="0.32942432" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -854,19 +756,11 @@
     <MESSAGE value="add session check by Filter and redirect page to index.jsp" />
     <MESSAGE value="some changes" />
     <MESSAGE value="starting migrate from JSP to JSF with CDI" />
-    <MESSAGE value="add Validator" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Validator" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting migrate from JSP to JSF with CDI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$PROJECT_DIR$/../lib/javax.faces-2.3.0.jar!/javax/faces/annotation/RequestParameterValuesMap.class</url>
-          <line>1</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="TomeeConfiguration">
@@ -880,6 +774,28 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/SoftServeTesting.java" />
+    <entry file="das://c85d504d-7eff-41d1-8954-0029f858d504/schema/library/table/author">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c85d504d-7eff-41d1-8954-0029f858d504/schema/library/table/book">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/jsp/lib/jsp-impl.jar!/standardSchemas/jspxml2.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7115">
+          <caret line="279" column="39" lean-forward="true" selection-start-line="279" selection-end-line="280" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/beans/Genre.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/awt/Image.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -899,6 +815,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resources/css/style_main_page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="51" lean-forward="true" selection-end-line="164" />
         </state>
       </provider>
     </entry>
@@ -955,6 +878,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/beans/AuthorList.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/enums/SearchType.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/db/Database.java" />
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlets/ShowImage.java" />
     <entry file="file://$PROJECT_DIR$/web/resources/css/style_main_page.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -964,6 +894,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="jar://C:/apache-tomee-plume-7.0.4/lib/javaee-api-7.0-1.jar!/javax/annotation/ManagedBean.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -979,6 +912,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlets/PdfContent.java" />
+    <entry file="file://$PROJECT_DIR$/web/resources/css/style_index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="71" column="20" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nls/messages_en_US.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/nls/messages.properties" />
     <entry file="file://$PROJECT_DIR$/src/main/java/nls/messages_ru_RU.properties" />
@@ -992,23 +932,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+    <entry file="file://$PROJECT_DIR$/src/nls/messages_ru_RU.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nls/messages_en_US.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/nls/messages.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../lib/javax.faces-2.3.0.jar!/javax/faces/annotation/RequestParameterValuesMap.class">
+    <entry file="file://$PROJECT_DIR$/src/filters/CheckSessionFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="43" />
+        <state relative-caret-position="102">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beans/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1019,96 +1001,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/nls/messages_ru_RU.properties">
-      <provider editor-type-id="ResourceBundle" />
+    <entry file="file://$PROJECT_DIR$/Library.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/filters/CheckSessionFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/style_index.css" />
-    <entry file="file://$PROJECT_DIR$/src/beans/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/resources/css/style_index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="92" column="23" selection-start-line="92" selection-start-column="23" selection-end-line="92" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/validators/LoginValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="84" selection-start-line="22" selection-start-column="84" selection-end-line="22" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nls/messages.properties">
-      <provider selected="true" editor-type-id="ResourceBundle" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nls/messages_en_US.properties">
-      <provider editor-type-id="ResourceBundle" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="10" selection-start-line="4" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pages/books.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
     </entry>
   </component>
   <component name="masterDetails">
