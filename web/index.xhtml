@@ -6,7 +6,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <!--suppress ELSpecValidationInJSP -->
     <title>#{msg.welcome_title}</title>
@@ -23,9 +24,22 @@
         <div class="login_div">
             <h:form styleClass="login_form">
                 <p class="title">#{msg.login_form_title}</p>
-                <h:inputText styleClass="login_form_input" id="username" value="#{user.username}"/><br/>
-                <h:inputSecret styleClass="login_form_input" id="password" value="#{user.password}"/><br/>
-                <h:commandButton styleClass="form_button" id="login" value="LOGIN"/>
+                <h:inputText styleClass="login_form_input" id="username" value="#{user.username}"
+                             a:placeholder="#{msg.placeholder_username}" required="true"
+                             requiredMessage="#{msg.login_required}">
+                    <f:validator validatorId="LoginValidator"/>
+                </h:inputText><br/>
+                <h:inputSecret styleClass="login_form_input" id="password" value="#{user.password}"
+                               a:placeholder="#{msg.placeholder_password}" required="true"
+                               requiredMessage="#{msg.password_required}">
+                    <f:validator validatorId="LoginValidator"/>
+                </h:inputSecret><br/>
+                <h:commandButton styleClass="form_button" id="login" action="pages/book?faces-redirect=true" value="LOGIN">
+                    <f:param name="pageId" value="2"/>
+                </h:commandButton>
+                <p class="error_message">
+                    <h:message for="username"/><br/>
+                    <h:message for="password"/></p>
             </h:form>
         </div>
 
