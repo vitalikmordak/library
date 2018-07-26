@@ -37,8 +37,7 @@ body {
     background: #FFFFFF;
     max-width: 360px;
     margin: 0 auto;
-    padding: 45px;
-    padding-top: 15px;
+    padding: 15px 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -87,4 +86,9 @@ body {
 
 .content {
     height: auto;
+}
+.error_message {
+    color: red;
+    font-size: 13px;
+    font-style: italic;
 }

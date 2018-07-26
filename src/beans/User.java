@@ -1,8 +1,11 @@
 package beans;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Map;
+
 @Named
 @SessionScoped
 public class User implements Serializable {
@@ -24,4 +27,5 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

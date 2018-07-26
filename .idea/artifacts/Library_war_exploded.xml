@@ -7,6 +7,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Library" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.faces-2.3.0" />
+        </element>
       </element>
       <element id="library" level="project" name="mysql-connector-java-8.0.11" />
     </root>
