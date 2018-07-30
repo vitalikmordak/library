@@ -34,9 +34,10 @@
                                requiredMessage="#{msg.password_required}">
                     <f:validator validatorId="LoginValidator"/>
                 </h:inputSecret><br/>
-                <h:commandButton styleClass="form_button" id="login" action="pages/book?faces-redirect=true" value="LOGIN">
-                    <f:param name="pageId" value="2"/>
-                </h:commandButton>
+                <h:commandButton styleClass="form_button" id="login" action="pages/book?faces-redirect=true"
+                                 value="LOGIN"/>
+                <!--<f:param name="pageId" value="2"/>-->
+                <!--</h:commandButton>-->
                 <p class="error_message">
                     <h:message for="username"/><br/>
                     <h:message for="password"/></p>

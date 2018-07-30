@@ -87,6 +87,7 @@ body {
 .content {
     height: auto;
 }
+
 .error_message {
     color: red;
     font-size: 13px;
