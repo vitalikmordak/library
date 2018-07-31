@@ -15,15 +15,15 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-    <!--Set header and footer for all pages-->
-    <jsp-config>
-        <jsp-property-group>
-            <display-name>header_and_footer</display-name>
-            <url-pattern>/pages/*</url-pattern>
-            <page-encoding>UTF-8</page-encoding>
-            <include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>
-            <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
-        </jsp-property-group>
-    </jsp-config>
+    <!--&lt;!&ndash;Set header and footer for all pages&ndash;&gt;-->
+    <!--<jsp-config>-->
+        <!--<jsp-property-group>-->
+            <!--<display-name>header_and_footer</display-name>-->
+            <!--<url-pattern>/pages/*</url-pattern>-->
+            <!--<page-encoding>UTF-8</page-encoding>-->
+            <!--<include-prelude>/WEB-INF/jspf/header.jspf</include-prelude>-->
+            <!--<include-coda>/WEB-INF/jspf/footer.jspf</include-coda>-->
+        <!--</jsp-property-group>-->
+    <!--</jsp-config>-->
 
 </web-app>

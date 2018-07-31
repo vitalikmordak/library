@@ -5,11 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xml:lang="en" lang="en">
 <h:head>
-    <title>#{msg.index_title}</title>
+    <title>Title</title>
     <h:outputStylesheet library="css" name="style_main_page.css"/>
 </h:head>
 <h:body>
-    <ui:composition template="/templates/library.xhtml"/>
-
+    <ui:composition>
+        <h4>#{msg.genres}</h4>
+        <h:dataTable value="#{genreList.genreList}" var="g">
+            <h:column>
+                #{g.name}
+            </h:column>
+        </h:dataTable>
+    </ui:composition>
 </h:body>
 </html>
