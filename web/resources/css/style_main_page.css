@@ -121,7 +121,7 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
 
 .search_form_option {
     font-family: "Roboto", sans-serif;
-    margin: 0 0 15px;
+    margin: 0 15px 15px;
     padding: 13px;
     box-sizing: border-box;
     font-size: 14px;

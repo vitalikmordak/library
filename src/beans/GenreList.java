@@ -2,6 +2,8 @@ package beans;
 
 import db.Database;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+@Named
+@ApplicationScoped
 public class GenreList {
     private List<Genre> genreList = new ArrayList<>();
     private Connection connection;

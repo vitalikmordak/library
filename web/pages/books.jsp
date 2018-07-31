@@ -29,7 +29,7 @@
             String letter = request.getParameter("letter");
             list = bookList.getBooksByLetter(letter);
         } else if (request.getParameter("search_str") != null) {
-            searchStr = request.getParameter("search_str");
+            String searchStr = request.getParameter("search_str");
             SearchType type = SearchType.TITLE;
             if (request.getParameter("search_option").equals("Author")) type = SearchType.AUTHOR;
             if (searchStr != null && !searchStr.trim().equals(""))
