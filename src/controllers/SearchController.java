@@ -8,6 +8,7 @@ import javax.inject.Named;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
 @Named
 @ApplicationScoped
 public class SearchController {
@@ -23,10 +24,6 @@ public class SearchController {
     public SearchType getSearchType() {
         return searchType;
     }
-
-//    public static Map<String, SearchType> getSearchList() {
-//        return searchList;
-//    }
 
     public Map<String, SearchType> getSearchList() {
         return searchList;

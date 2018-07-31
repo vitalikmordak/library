@@ -3,25 +3,26 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"  xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en">
 <h:head>
     <title>Title</title>
     <h:outputStylesheet library="css" name="style_main_page.css"/>
 </h:head>
 <h:body>
     <ui:composition>
-            <h:graphicImage library="images" name="logo.png" width="auto" height="90"/>
-            <div class="welcome"> #{msg.welcome_header} #{user.username}<br/>
-                <h:link style="float: right;" outcome="index.xmtml" value="#{msg.logout}"/>
-            </div>
-            <h:form styleClass="search_form">
-                <h:graphicImage style="vertical-align: middle; margin-right: 10px;" library="images" name="search_icon.png"/>
-                <h:inputText styleClass="search_form_input" id="search_str" size="100"/>
-                <h:commandButton styleClass="search_form_button" id="search_button" value="#{msg.search_button}"/>
-                <h:selectOneMenu styleClass="search_form_option" value="#{searchController.searchType}">
-                    <f:selectItems value="${searchController.searchList}"/>
-                </h:selectOneMenu>
-            </h:form>
+        <h:graphicImage library="images" name="logo.png" width="auto" height="90"/>
+        <div class="welcome"> #{msg.welcome_header} #{user.username}<br/>
+            <h:link value="#{msg.logout}" outcome="index"/>
+        </div>
+        <h:form styleClass="search_form">
+            <h:graphicImage style="vertical-align: middle; margin-right: 10px;" library="images"
+                            name="search_icon.png"/>
+            <h:inputText styleClass="search_form_input" id="search_str" size="100"/>
+            <h:commandButton styleClass="search_form_button" id="search_button" value="#{msg.search_button}"/>
+            <h:selectOneMenu styleClass="search_form_option" value="#{searchController.searchType}">
+                <f:selectItems value="#{searchController.searchList}"/>
+            </h:selectOneMenu>
+        </h:form>
     </ui:composition>
 
 </h:body>

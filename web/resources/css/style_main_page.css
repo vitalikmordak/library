@@ -1,10 +1,3 @@
-ul.nav a, ul.nav a:visited {
-    padding: 5px 5px 5px 15px;
-    display: block;
-    text-decoration: none;
-    color: #000;
-}
-
 body {
     font: 100%/1.4 "Roboto", sans-serif;
     background-color: #76b852;
@@ -68,19 +61,23 @@ a:hover, a:active, a:focus {
     float: left;
 }
 
-ul.nav {
+.genres {
     list-style: none;
-
     margin-bottom: 15px;
 }
 
-ul.nav li {
-
+.genres a, a:visited {
+    padding: 5px 5px 5px 15px;
+    display: block;
+    text-decoration: none;
+    color: #000;
+    transition: text-shadow .3s;
 }
 
-ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
+.genres a:hover, a:active, a:focus {
     background-color: #FFFFFF;
     color: #43A047;
+    text-shadow: 0 0 0.2px #4caf50, 0 0 0.2px #4caf50;
 }
 
 .search_form {
@@ -184,4 +181,5 @@ ul.nav a:hover, ul.nav a:active, ul.nav a:focus {
 
 .welcome {
     float: right;
+    text-align: right;
 }

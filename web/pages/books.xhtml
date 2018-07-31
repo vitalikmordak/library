@@ -9,7 +9,11 @@
     <h:outputStylesheet library="css" name="style_main_page.css"/>
 </h:head>
 <h:body>
-    <ui:composition template="/templates/library.xhtml"/>
+    <ui:composition template="/templates/library.xhtml">
+        <ui:define name="content">
+            #{param.get("genre_id")}
+        </ui:define>
+    </ui:composition>
 
 </h:body>
 </html>
