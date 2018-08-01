@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <%@include file="../WEB-INF/jspf/left_menu.jspf" %>
-<jsp:useBean id="bookList" class="beans.BookList" scope="page"/>
+<jsp:useBean id="bookList" class="controllers.BookController" scope="page"/>
 <h3>${param.name}</h3>
 <h5 style="font-size: 14px; display: inline-block; margin-left: 30px; padding: 0;">Found books:</h5>
 <div class="book_list">

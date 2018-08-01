@@ -1,5 +1,6 @@
 package beans;
 
+import controllers.BookController;
 import db.Database;
 
 import java.sql.Connection;
@@ -129,7 +130,7 @@ public class Book {
                 if (connection != null) connection.close();
                 if (rs != null) rs.close();
             } catch (SQLException e) {
-                Logger.getLogger(BookList.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }

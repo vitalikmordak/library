@@ -1,7 +1,8 @@
 package beans;
 
 public class Genre {
-    public Genre() {}
+    public Genre() {
+    }
 
     private String name;
     private long id;

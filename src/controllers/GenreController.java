@@ -1,5 +1,6 @@
-package beans;
+package controllers;
 
+import beans.Genre;
 import db.Database;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,9 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 @Named
+@Eager
 @ApplicationScoped
-public class GenreList {
+public class GenreController {
     private List<Genre> genreList = new ArrayList<>();
     private Connection connection;
     private Statement stat;
@@ -33,14 +36,14 @@ public class GenreList {
                 genreList.add(genre);
             }
         } catch (SQLException e) {
-            Logger.getLogger(GenreList.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(GenreController.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             try {
                 if (stat != null) stat.close();
                 if (connection != null) connection.close();
                 if (rs != null) rs.close();
             } catch (SQLException e) {
-                Logger.getLogger(GenreList.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(GenreController.class.getName()).log(Level.SEVERE, null, e);
             }
         }
         return (ArrayList<Genre>) genreList;
@@ -51,4 +54,5 @@ public class GenreList {
             return (ArrayList<Genre>) genreList;
         } else return getGenres();
     }
+
 }
