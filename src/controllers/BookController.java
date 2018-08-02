@@ -2,9 +2,11 @@ package controllers;
 
 import beans.Book;
 import db.Database;
+import enums.SearchType;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -16,10 +18,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 @Named
 @SessionScoped
 public class BookController implements Serializable {
     private List<Book> bookList;
+    private String searchString;
+
     private void getBooks(String s) {
         Connection connection = null;
         Statement stat = null;
@@ -65,7 +70,7 @@ public class BookController implements Serializable {
 //        if (!bookList.isEmpty()) {
 //            return (ArrayList<Book>) bookList;
 //        } else return
-    getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
+        getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
                 "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
                 "inner join author a on b.author_id=a.id " +
                 "inner join genre g on b.genre_id=g.id " +
@@ -80,43 +85,56 @@ public class BookController implements Serializable {
 //        if (id == 0) {
 //            return getAllBooks();
 //        } else {return
- getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-                    "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-                    "inner join author a on b.author_id=a.id " +
-                    "inner join genre g on b.genre_id=g.id " +
-                    "inner join publisher p on b.publisher_id=p.id " +
-                    "where genre_id=" + id + " order by b.name " +
-                    "limit 0,5");
+        getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
+                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
+                "inner join author a on b.author_id=a.id " +
+                "inner join genre g on b.genre_id=g.id " +
+                "inner join publisher p on b.publisher_id=p.id " +
+                "where genre_id=" + id + " order by b.name " +
+                "limit 0,5");
 //        }
     }
 
-//    public ArrayList<Book> getBooksByLetter(String letter) {
-//        return getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-//                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-//                "inner join author a on b.author_id=a.id " +
-//                "inner join genre g on b.genre_id=g.id " +
-//                "inner join publisher p on b.publisher_id=p.id " +
-//                "where substr(b.name, 1, 1)='" + letter + "' order by b.name " +
-//                "limit 0,5");
-//    }
+    public void getBooksByLetter() {
+        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        char letter = params.get("letter").charAt(0);
+        getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
+                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
+                "inner join author a on b.author_id=a.id " +
+                "inner join genre g on b.genre_id=g.id " +
+                "inner join publisher p on b.publisher_id=p.id " +
+                "where substr(b.name, 1, 1)='" + letter + "' order by b.name " +
+                "limit 0,5");
+    }
 
-//    public ArrayList<Book> getBooksBySearch(String searchStr, SearchType type) {
-//        StringBuilder sqlRequest = new StringBuilder("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-//                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-//                "inner join author a on b.author_id=a.id " +
-//                "inner join genre g on b.genre_id=g.id " +
-//                "inner join publisher p on b.publisher_id=p.id ");
-//        try {
-//            if (type == SearchType.AUTHOR) {
-//                sqlRequest.append("where lower(a.fio) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
-//            } else if (type == SearchType.TITLE) {
-//                sqlRequest.append("where lower(b.name) like '%" + searchStr.toLowerCase() + "%' order by b.name ");
-//            }
-//            sqlRequest.append("limit 0,5");
-//        } catch (NullPointerException e) {
-//            Logger.getLogger(GenreController.class.getName()).log(Level.SEVERE, "Search string is empty", e);
-//        }
-//        return getBooks(sqlRequest.toString());
-//    }
+    @Inject
+    SearchController searchController;
 
+    public void getBooksBySearch() {
+        SearchType type = searchController.getSearchType();
+        StringBuilder sqlRequest = new StringBuilder("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
+                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
+                "inner join author a on b.author_id=a.id " +
+                "inner join genre g on b.genre_id=g.id " +
+                "inner join publisher p on b.publisher_id=p.id ");
+        try {
+            if (type == SearchType.AUTHOR) {
+                sqlRequest.append("where lower(a.fio) like '%" + searchString.toLowerCase() + "%' order by b.name ");
+            } else if (type == SearchType.TITLE) {
+                sqlRequest.append("where lower(b.name) like '%" + searchString.toLowerCase() + "%' order by b.name ");
+            }
+            sqlRequest.append("limit 0,5");
+        } catch (NullPointerException e) {
+            Logger.getLogger(GenreController.class.getName()).log(Level.SEVERE, "Search string is empty", e);
+        }
+        getBooks(sqlRequest.toString());
+    }
+
+    public String getSearchString() {
+        return searchString;
+    }
+
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
+    }
 }
