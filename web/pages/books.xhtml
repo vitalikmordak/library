@@ -28,6 +28,9 @@
                             <br/><strong>Number of pages:</strong> #{b.pageCount}
                             <br/><strong>The year of publishing:</strong> #{b.publishDate}
                             <br/><strong>Author:</strong> #{b.author}
+                            <p style="text-align: center; margin-top: 10px;"><h:outputLink
+                                    value="#{request.contextPath}/PdfContent?id=#{b.id}"
+                                    target="_blank">#{msg.download_pdf}</h:outputLink></p>
                         </div>
                     </div>
                 </ui:repeat>
