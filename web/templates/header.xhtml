@@ -12,7 +12,9 @@
     <ui:composition>
         <h:graphicImage library="images" name="logo.png" width="auto" height="90"/>
         <div class="welcome"> #{msg.welcome_header} #{user.username}<br/>
-            <h:link value="#{msg.logout}" outcome="index"/>
+            <h:form>
+                <h:commandLink value="#{msg.logout}" action="#{user.logout}"/>
+            </h:form>
         </div>
         <h:form styleClass="search_form">
             <h:graphicImage style="vertical-align: middle; margin-right: 10px;" library="images"

@@ -1,6 +1,7 @@
 package beans;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
 
@@ -24,6 +25,12 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String logout() {
+
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/index?faces-redirect=true";
     }
 
 }
