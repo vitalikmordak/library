@@ -32,7 +32,8 @@
         <div class="letters"><h:form>
             <ui:repeat value="#{searchController.letters}" var="l">
 
-                <h:commandLink value="#{l} " action="#{bookController.getBooksByLetter}">
+                <h:commandLink value="#{l} " action="#{bookController.getBooksByLetter}"
+                               styleClass="#{l == bookController.selectedLetter ? 'selected_item':''}">
                     <f:param name="letter" value="#{l}"/>
                 </h:commandLink>
 

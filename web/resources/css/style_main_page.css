@@ -75,7 +75,7 @@ a:hover, a:active, a:focus {
     transition: text-shadow .3s;
 }
 
-.genres a:hover, a:active, a:focus {
+a:hover, a:active, a:focus {
     background-color: #FFFFFF;
     color: #43A047;
     text-shadow: 0 0 0.2px #4caf50, 0 0 0.2px #4caf50;
@@ -169,7 +169,7 @@ a:hover, a:active, a:focus {
 
 .letters {
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .letters a.active {
@@ -183,4 +183,15 @@ a:hover, a:active, a:focus {
 .welcome {
     float: right;
     text-align: right;
+}
+
+.pages {
+    text-align: center;
+    font-size: 14px;
+}
+
+.genres .selected_item, .pages .selected_item, .letters .selected_item {
+    text-decoration: none;
+    color: #43A047;
+    font-weight: 600;
 }

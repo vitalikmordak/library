@@ -125,13 +125,7 @@ public class Book {
         } catch (SQLException e) {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, e);
         } finally {
-            try {
-                if (stat != null) stat.close();
-                if (connection != null) connection.close();
-                if (rs != null) rs.close();
-            } catch (SQLException e) {
-                Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
-            }
+            BookController.closeConnections(connection, stat, rs);
         }
     }
 

@@ -20,7 +20,7 @@ public class CheckSessionFilter implements Filter {
 
         HttpSession session = request.getSession(true);
         if (session == null || session.isNew()) {
-            response.sendRedirect("../index.jsp");
+            response.sendRedirect("/index.xhtml");
         }
         chain.doFilter(request, response);
     }
