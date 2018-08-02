@@ -12,13 +12,17 @@
     <ui:composition>
         <h4>#{msg.genres}</h4>
         <div class="genres">
+            <h:form>
+                <h:commandLink action="#{bookController.getAllBooks}" value="All books">
+                    <f:param name="genre_id" value="0"/>
+                </h:commandLink>
             <ui:repeat value="#{genreController.genreList}" var="g">
-                <h:form>
+
                     <h:commandLink action="#{bookController.getBooksByGenre}" value="#{g.name}">
                         <f:param name="genre_id" value="#{g.id}"/>
                     </h:commandLink>
-                </h:form>
-            </ui:repeat>
+
+            </ui:repeat></h:form>
         </div>
     </ui:composition>
 </h:body>
