@@ -3,7 +3,7 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en">
 <h:head>
     <title>#{msg.index_title}</title>
     <h:outputStylesheet library="css" name="style_main_page.css"/>
@@ -12,7 +12,7 @@
 
     <ui:composition template="/templates/library.xhtml">
         <ui:define name="content">
-            <h5 style="font-size: 14px; display: inline-block; margin-left: 30px; padding: 0; margin-bottom: 0;">#{msg.found_books} #{bookController.countAllBooks}</h5>
+            <h5 style="font-size: 14px; display: inline-block; margin-left: 30px; padding: 0;">#{msg.found_books} #{bookController.countAllBooks}</h5>
             <div class="book_list">
                 <ui:repeat value="#{bookController.bookList}" var="b">
                     <div class="book_info">
