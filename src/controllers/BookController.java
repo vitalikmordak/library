@@ -25,6 +25,10 @@ public class BookController implements Serializable {
     private List<Book> bookList;
     private String searchString;
 
+    public BookController() {
+        getAllBooks();
+    }
+
     private void getBooks(String s) {
         Connection connection = null;
         Statement stat = null;
