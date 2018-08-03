@@ -28,19 +28,21 @@
                              a:placeholder="#{msg.placeholder_username}" required="true"
                              requiredMessage="#{msg.login_required}">
                     <f:validator validatorId="LoginValidator"/>
+                    <f:ajax event="keyup" render="usernameError"/>
                 </h:inputText><br/>
                 <h:inputSecret styleClass="login_form_input" id="password" value="#{user.password}"
                                a:placeholder="#{msg.placeholder_password}" required="true"
                                requiredMessage="#{msg.password_required}">
                     <f:validator validatorId="LoginValidator"/>
+                    <f:ajax event="keyup" render="passwordError"/>
                 </h:inputSecret><br/>
                 <h:commandButton styleClass="form_button" id="login" action="pages/books?faces-redirect=true"
                                  value="LOGIN"/>
                 <!--<f:param name="pageId" value="2"/>-->
                 <!--</h:commandButton>-->
                 <p class="error_message">
-                    <h:message for="username"/><br/>
-                    <h:message for="password"/></p>
+                    <h:message id="usernameError" for="username"/><br/>
+                    <h:message id="passwordError" for="password"/></p>
             </h:form>
         </div>
 

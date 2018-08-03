@@ -17,11 +17,11 @@ public class LoginValidator implements Validator {
         try {
             switch (uiComponent.getId()) {
                 case "username":
-                    if (value.length() < 5) {
-                        throw new IllegalArgumentException(bundle.getString("error_login_length"));
-                    }
                     if (!Character.isLetter(value.charAt(0))) {
                         throw new IllegalArgumentException(bundle.getString("error_first_letter"));
+                    }
+                    if (value.length() < 5) {
+                        throw new IllegalArgumentException(bundle.getString("error_login_length"));
                     }
                     if (value.equals("username") || o.toString().equals("login")) {
                         throw new IllegalArgumentException(bundle.getString("error_login_used").concat(o.toString() + "\""));
@@ -35,7 +35,7 @@ public class LoginValidator implements Validator {
                     break;
             }
         } catch (IllegalArgumentException e) {
-            FacesMessage message= new FacesMessage(e.getMessage());
+            FacesMessage message = new FacesMessage(e.getMessage());
             message.setSeverity(FacesMessage.SEVERITY_ERROR);
             throw new ValidatorException(message);
         }
