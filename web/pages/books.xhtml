@@ -12,39 +12,47 @@
 
     <ui:composition template="/templates/library.xhtml">
         <ui:define name="content">
-            <h5 style="font-size: 14px; display: inline-block; margin-left: 30px; margin-bottom: 0; padding: 0;">#{msg.found_books} #{bookController.countAllBooks}</h5>
+            <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper" style="display: none; margin: auto;"/>
+            <h:outputText value="#{msg.found_books} #{bookController.countAllBooks}" id="countAllBooks"/>
             <div class="book_list">
-                <ui:repeat value="#{bookController.bookList}" var="b">
-                    <div class="book_info">
-                        <div class="book_title">
-                            <p>#{b.name}</p>
+                <h:panelGroup id="books">
+                    <ui:repeat value="#{bookController.bookList}" var="b">
+                        <div class="book_info">
+                            <div class="book_title">
+                                <p>#{b.name}</p>
+                            </div>
+                            <div class="book_image">
+                                <h:graphicImage value="/ShowImage?id=#{b.id}"/>
+                            </div>
+                            <div class="book_details">
+                                <br/><strong>ISBN:</strong> #{b.isbn}
+                                <br/><strong>Publisher:</strong> #{b.publisher}
+                                <br/><strong>Number of pages:</strong> #{b.pageCount}
+                                <br/><strong>The year of publishing:</strong> #{b.publishDate}
+                                <br/><strong>Author:</strong> #{b.author}
+                                <p style="text-align: center; margin-top: 10px;"><h:outputLink
+                                        value="#{request.contextPath}/PdfContent?id=#{b.id}"
+                                        target="_blank">#{msg.download_pdf}</h:outputLink></p>
+                            </div>
                         </div>
-                        <div class="book_image">
-                            <h:graphicImage value="/ShowImage?id=#{b.id}"/>
-                        </div>
-                        <div class="book_details">
-                            <br/><strong>ISBN:</strong> #{b.isbn}
-                            <br/><strong>Publisher:</strong> #{b.publisher}
-                            <br/><strong>Number of pages:</strong> #{b.pageCount}
-                            <br/><strong>The year of publishing:</strong> #{b.publishDate}
-                            <br/><strong>Author:</strong> #{b.author}
-                            <p style="text-align: center; margin-top: 10px;"><h:outputLink
-                                    value="#{request.contextPath}/PdfContent?id=#{b.id}"
-                                    target="_blank">#{msg.download_pdf}</h:outputLink></p>
-                        </div>
-                    </div>
-                </ui:repeat>
+                    </ui:repeat>
+                </h:panelGroup>
             </div>
             <div class="pages">
-                <h:form rendered="#{bookController.countAllBooks>bookController.booksOnPage}">
-                    #{msg.pages}
-                    <ui:repeat value="#{bookController.pageNumber}" var="p">
-                        <h:commandLink value="#{p} " action="#{bookController.selectPage}"
-                                       styleClass="#{p == bookController.selectedPageNumber ? 'selected_item':''}">
-                            <f:param name="page_number" value="#{p}"/>
-                        </h:commandLink>
-                    </ui:repeat>
-                </h:form>
+                <h:panelGroup id="pagesForm">
+                    <h:form rendered="#{bookController.countAllBooks>bookController.booksOnPage}">
+                        #{msg.pages}
+                        <ui:repeat value="#{bookController.pageNumber}" var="p">
+                            <h:commandLink value="#{p} "
+                                           styleClass="#{p == bookController.selectedPageNumber ? 'selected_item':''}">
+                                <f:param name="page_number" value="#{p}"/>
+                                <f:ajax onevent="loading" event="action"
+                                        render="pagesForm books countAllBooks :lettersForm :genresList :searchForm"
+                                        listener="#{bookController.selectPage}"/>
+                            </h:commandLink>
+                        </ui:repeat>
+                    </h:form>
+                </h:panelGroup>
             </div>
         </ui:define>
     </ui:composition>

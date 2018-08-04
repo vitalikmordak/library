@@ -16,25 +16,24 @@
                 <h:commandLink value="#{msg.logout}" action="#{user.logout}"/>
             </h:form>
         </div>
-        <h:form styleClass="search_form">
+        <h:form styleClass="search_form" id="searchForm">
             <h:graphicImage style="vertical-align: middle; margin-right: 10px;" library="images"
                             name="search_icon.png"/>
             <h:inputText styleClass="search_form_input" id="search_str" value="#{bookController.searchString}"
                          size="100"/>
             <h:commandButton styleClass="search_form_button" id="search_button" value="#{msg.search_button}"
                              action="#{bookController.getBooksBySearch()}"/>
-
             <h:selectOneMenu styleClass="search_form_option" value="#{searchController.searchType}">
                 <f:selectItems value="#{searchController.searchList}"/>
             </h:selectOneMenu>
-
         </h:form>
-        <div class="letters"><h:form>
+        <div class="letters"><h:form id="lettersForm">
             <ui:repeat value="#{searchController.letters}" var="l">
 
-                <h:commandLink value="#{l} " action="#{bookController.getBooksByLetter}"
-                               styleClass="#{l == bookController.selectedLetter ? 'selected_item':''}">
+                <h:commandLink value="#{l} " styleClass="#{l == bookController.selectedLetter ? 'selected_item':''}">
                     <f:param name="letter" value="#{l}"/>
+                    <f:ajax onevent="loading" event="click" render=":pagesForm :books :countAllBooks lettersForm :genresList"
+                            listener="#{bookController.getBooksByLetter}"/>
                 </h:commandLink>
 
             </ui:repeat>

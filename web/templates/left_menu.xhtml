@@ -3,7 +3,7 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core" xml:lang="en" lang="en">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en">
 <h:head>
     <title>Title</title>
     <h:outputStylesheet library="css" name="style_main_page.css"/>
@@ -12,15 +12,16 @@
     <ui:composition>
         <h4>#{msg.genres}</h4>
         <div class="genres">
-            <h:form>
+            <h:form id="genresList">
                 <h:commandLink action="#{bookController.getAllBooks}" value="All books"
                                styleClass="#{bookController.selectedAllBooks ? 'selected_item':''}"/>
-                <ui:repeat value="#{genreController.genreList}" var="g">
+                <ui:repeat value="#{genreController.genreList}" var="g" >
 
-                    <h:commandLink action="#{bookController.getBooksByGenre}" value="#{g.name}"
+                    <h:commandLink value="#{g.name}"
                                    styleClass="#{g.id == bookController.selectedGenreId ? 'selected_item':''}">
                         <f:param name="genre_id" value="#{g.id}"/>
-                    </h:commandLink>
+                        <f:ajax onevent="loading" event="click" render="@form :books :countAllBooks :pagesForm :lettersForm :searchForm" listener="#{bookController.getBooksByGenre}"/>
+                </h:commandLink>
 
                 </ui:repeat></h:form>
         </div>
