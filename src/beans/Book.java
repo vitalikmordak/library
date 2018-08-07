@@ -23,11 +23,21 @@ public class Book {
     private String publisher;
     private byte[] image;
 
+    private boolean edit;
+
     public Book() {
     }
 
     public long getId() {
         return id;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
 
     public void setId(long id) {

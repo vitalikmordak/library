@@ -34,7 +34,7 @@
                                          value="#{msg.save_changes}">
                             <f:ajax onevent="loading" execute="books" render="books"/>
                         </h:commandButton>
-                        <h:commandButton immediate="true" action="#{bookController.switchEditMode}"
+                        <h:commandButton immediate="true" action="#{bookController.cancel}"
                                          rendered="#{bookController.editMode}" value="#{msg.cancel_changes}">
                             <f:ajax onevent="loading" execute="books" render="books"/>
                         </h:commandButton>
@@ -43,31 +43,32 @@
                         <div class="book_info">
                             <div class="book_title">
                                 <p><h:outputText value="#{b.name}" rendered="#{!bookController.editMode}"/>
-                                    <h:inputText value="#{b.name}" rendered="#{bookController.editMode}"/></p>
+                                    <h:inputText value="#{b.name}" style=" width: 120px;" rendered="#{bookController.editMode and b.edit}" /></p>
                             </div>
                             <div class="book_image">
                                 <h:graphicImage value="/ShowImage?id=#{b.id}"/>
                             </div>
                             <div class="book_details">
                                 <br/><strong>ISBN:</strong> <h:outputText value="#{b.isbn}"
-                                                                          rendered="#{!bookController.editMode}"/>
-                                <h:inputText value="#{b.isbn}" rendered="#{bookController.editMode}"/>
+                                                                          rendered="#{!b.edit}"/>
+                                <h:inputText value="#{b.isbn}" rendered="#{bookController.editMode and b.edit}" style=" width: 120px;"/>
                                 <br/><strong>Publisher:</strong> <h:outputText value="#{b.publisher}"
-                                                                               rendered="#{!bookController.editMode}"/>
-                                <h:inputText value="#{b.publisher}" rendered="#{bookController.editMode}"/>
+                                                                               rendered="#{!b.edit}"/>
+                                <h:inputText value="#{b.publisher}" rendered="#{bookController.editMode and b.edit}" style=" width: 120px;"/>
                                 <br/><strong>Number of pages:</strong> <h:outputText value="#{b.pageCount}"
-                                                                                     rendered="#{!bookController.editMode}"/>
-                                <h:inputText value="#{b.pageCount}" rendered="#{bookController.editMode}"/>
+                                                                                     rendered="#{!b.edit}"/>
+                                <h:inputText value="#{b.pageCount}" rendered="#{bookController.editMode and b.edit}" style=" width: 120px;"/>
                                 <br/><strong>The year of publishing:</strong> <h:outputText value="#{b.publishDate}"
-                                                                                            rendered="#{!bookController.editMode}"/>
-                                <h:inputText value="#{b.publishDate}" rendered="#{bookController.editMode}"/>
+                                                                                            rendered="#{!b.edit}"/>
+                                <h:inputText value="#{b.publishDate}" rendered="#{bookController.editMode and b.edit}" style=" width: 120px;"/>
                                 <br/><strong>Author:</strong> <h:outputText value="#{b.author}"
-                                                                            rendered="#{!bookController.editMode}"/>
-                                <h:inputText value="#{b.author}" rendered="#{bookController.editMode}"/>
+                                                                            rendered="#{!b.edit}"/>
+                                <h:inputText value="#{b.author}" rendered="#{bookController.editMode and b.edit}" style=" width: 120px;"/>
                                 <p style="text-align: center; margin-top: 10px;"><h:outputLink
                                         value="#{request.contextPath}/PdfContent?id=#{b.id}"
                                         target="_blank"
                                         rendered="#{!bookController.editMode}">#{msg.download_pdf}</h:outputLink></p>
+                                <p style="text-align: center;"><h:selectBooleanCheckbox value="#{b.edit}" rendered="#{!bookController.editMode}"/></p>
                             </div>
                         </div>
                     </ui:repeat>

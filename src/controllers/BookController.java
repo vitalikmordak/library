@@ -25,7 +25,7 @@ public class BookController implements Serializable {
     private int selectedGenreId; // selected genre
     private char selectedLetter; // selected letter
     private long countAllBooks; // number of all books
-    private int selectedPageNumber = 0; // selected page number
+    private int selectedPageNumber = 1; // selected page number
     private List<Integer> pageNumber = new ArrayList<>();
     private String currentSql; // the last sql executed without adding a limit
     private boolean isSelectedAllBooks = false;
@@ -50,7 +50,7 @@ public class BookController implements Serializable {
             fillPageNumbers(countAllBooks, booksOnPage);
             // add limit if need
             if (countAllBooks > booksOnPage) {
-                sqlBuilder.append(" limit ").append(selectedPageNumber * booksOnPage).append(",").append(booksOnPage);
+                sqlBuilder.append(" limit ").append(selectedPageNumber * booksOnPage-booksOnPage).append(",").append(booksOnPage);
             }
             rs = stat.executeQuery(sqlBuilder.toString());
 
@@ -78,10 +78,10 @@ public class BookController implements Serializable {
     }
 
     private void fillPageNumbers(long countAllBooks, int countBooksOnPage) {
-        int pageCount = countAllBooks > 0 ? (int) (countAllBooks / countBooksOnPage) : 0;
+        int pageCount = countAllBooks > 0 ? (int) (countAllBooks / countBooksOnPage)+1 : 0;
 
         pageNumber.clear(); // clear before each request
-        for (int i = 0; i <= pageCount; i++) {
+        for (int i = 1; i <= pageCount; i++) {
             pageNumber.add(i);
         }
     }
@@ -97,7 +97,7 @@ public class BookController implements Serializable {
         isSelectedAllBooks = true;
         selectedLetter = ' ';
         selectedGenreId = 0;
-        selectedPageNumber = 0;
+        selectedPageNumber = 1;
     }
 
     // Create bookList by genre
@@ -110,7 +110,7 @@ public class BookController implements Serializable {
                 "inner join genre g on b.genre_id=g.id " +
                 "inner join publisher p on b.publisher_id=p.id " +
                 "where genre_id=" + selectedGenreId + " order by b.name ");
-        selectedPageNumber = 0;
+        selectedPageNumber = 1;
         selectedLetter = ' ';
         isSelectedAllBooks = false;
     }
@@ -125,7 +125,7 @@ public class BookController implements Serializable {
                 "inner join publisher p on b.publisher_id=p.id " +
                 "where substr(b.name, 1, 1)='" + selectedLetter + "' order by b.name ");
         selectedGenreId = 0;
-        selectedPageNumber = 0;
+        selectedPageNumber = 1;
         isSelectedAllBooks = false;
     }
 
@@ -151,7 +151,7 @@ public class BookController implements Serializable {
 
         getBooks(sqlRequest.toString());
         selectedGenreId = 0;
-        selectedPageNumber = 0;
+        selectedPageNumber = 1;
         selectedLetter = ' ';
         isSelectedAllBooks = false;
     }
@@ -172,6 +172,7 @@ public class BookController implements Serializable {
             preparedStat = conn.prepareStatement("update book set name=?, isbn=?, page_count=?, publish_year=? where id=?");
 
             for (Book book : bookList) {
+                if (!book.isEdit()) continue; // if current book does not need editing, skip it
                 preparedStat.setString(1, book.getName());
                 preparedStat.setString(2, book.getIsbn());
 //                preparedStat.setString(3,book.getAuthor());
@@ -186,12 +187,18 @@ public class BookController implements Serializable {
         } finally {
             closeConnections(conn, preparedStat, rs);
         }
-        switchEditMode();
+        cancel();
     }
 
     // Change editMode
     public void switchEditMode() {
         editMode = !editMode;
+    }
+
+    public void cancel() {
+        switchEditMode();
+        // clear checkboxes
+        bookList.forEach(book -> book.setEdit(false));
     }
 
     public boolean getEditMode() {
