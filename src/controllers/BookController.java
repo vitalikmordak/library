@@ -28,8 +28,8 @@ public class BookController implements Serializable {
     private int selectedPageNumber = 1; // selected page number
     private List<Integer> pageNumber = new ArrayList<>();
     private String currentSql; // the last sql executed without adding a limit
-    private boolean isSelectedAllBooks = false;
-    private boolean editMode;
+    private boolean isSelectedAllBooks = false; // Is "All books" selected?
+    private boolean editMode; // to ON|OFF edit mode
 
     public BookController() {
         getAllBooks();
@@ -165,7 +165,6 @@ public class BookController implements Serializable {
     // Update book data
     public void updateBook() {
         PreparedStatement preparedStat = null;
-        ResultSet rs = null;
         Connection conn = null;
         try {
             conn = Database.getConnection();
@@ -185,7 +184,7 @@ public class BookController implements Serializable {
         } catch (SQLException e) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
         } finally {
-            closeConnections(conn, preparedStat, rs);
+            closeConnections(conn, preparedStat, null);
         }
         cancel();
     }

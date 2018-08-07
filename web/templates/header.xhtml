@@ -32,7 +32,8 @@
 
                 <h:commandLink value="#{l} " styleClass="#{l == bookController.selectedLetter ? 'selected_item':''}">
                     <f:param name="letter" value="#{l}"/>
-                    <f:ajax onevent="loading" event="click" render=":pagesForm :books :countAllBooks lettersForm :genresList"
+                    <f:ajax onevent="loading" event="click"
+                            render=":pagesForm :books :countAllBooks lettersForm :genresList"
                             listener="#{bookController.getBooksByLetter}"/>
                 </h:commandLink>
 

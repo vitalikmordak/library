@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 @ApplicationScoped
 public class SearchController {
     private SearchType searchType;
-    private static Map<String, SearchType> searchList = new HashMap<>();
+    private static final Map<String, SearchType> searchList = new HashMap<>();
 
     public SearchController() {
         ResourceBundle bundle = ResourceBundle.getBundle("nls.messages", FacesContext.getCurrentInstance().getViewRoot().getLocale());
@@ -28,7 +28,7 @@ public class SearchController {
     public Map<String, SearchType> getSearchList() {
         return searchList;
     }
-
+    // get letters array
     public Character[] getLetters() {
         return "abcdefghijklmnopqrstuvwxyz".toUpperCase().chars().mapToObj(c -> (char) c).toArray(Character[]::new);
     }

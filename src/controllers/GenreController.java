@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @Eager
 @ApplicationScoped
 public class GenreController {
-    private List<Genre> genreList = new ArrayList<>();
+    private final List<Genre> genreList = new ArrayList<>();
     private Connection connection;
     private Statement stat;
     private ResultSet rs;

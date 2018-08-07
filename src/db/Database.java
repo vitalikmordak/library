@@ -10,13 +10,11 @@ import java.util.logging.Logger;
 
 public class Database {
     private static Connection connection;
-    private static InitialContext ic;
-    private static DataSource ds;
 
     public static Connection getConnection() {
         try {
-            ic = new InitialContext();
-            ds = (DataSource) ic.lookup("java:comp/env/jdbc/library");
+            InitialContext ic = new InitialContext();
+            DataSource ds = (DataSource) ic.lookup("java:comp/env/jdbc/library");
             connection = ds.getConnection();
 
         } catch (SQLException | NamingException e) {

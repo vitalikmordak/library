@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebFilter(filterName = "FilterUTF8", urlPatterns = "*")
 public class FilterUTF8 implements Filter {
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
