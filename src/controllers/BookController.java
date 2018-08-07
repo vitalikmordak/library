@@ -9,10 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +29,7 @@ public class BookController implements Serializable {
     private List<Integer> pageNumber = new ArrayList<>();
     private String currentSql; // the last sql executed without adding a limit
     private boolean isSelectedAllBooks = false;
+    private boolean editMode;
 
     public BookController() {
         getAllBooks();
@@ -162,6 +160,42 @@ public class BookController implements Serializable {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedPageNumber = Integer.valueOf(params.get("page_number"));
         getBooks(currentSql);
+    }
+
+    // Update book data
+    public void updateBook() {
+        PreparedStatement preparedStat = null;
+        ResultSet rs = null;
+        Connection conn = null;
+        try {
+            conn = Database.getConnection();
+            preparedStat = conn.prepareStatement("update book set name=?, isbn=?, page_count=?, publish_year=? where id=?");
+
+            for (Book book : bookList) {
+                preparedStat.setString(1, book.getName());
+                preparedStat.setString(2, book.getIsbn());
+//                preparedStat.setString(3,book.getAuthor());
+                preparedStat.setInt(3, book.getPageCount());
+                preparedStat.setInt(4, book.getPublishDate());
+                preparedStat.setLong(5, book.getId());
+                preparedStat.addBatch();
+            }
+            preparedStat.executeBatch();
+        } catch (SQLException e) {
+            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            closeConnections(conn, preparedStat, rs);
+        }
+        switchEditMode();
+    }
+
+    // Change editMode
+    public void switchEditMode() {
+        editMode = !editMode;
+    }
+
+    public boolean getEditMode() {
+        return editMode;
     }
 
     // Close connection to DB

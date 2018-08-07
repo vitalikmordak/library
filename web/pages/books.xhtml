@@ -3,7 +3,8 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xml:lang="en" lang="en">
 <h:head>
     <title>#{msg.index_title}</title>
     <h:outputStylesheet library="css" name="style_main_page.css"/>
@@ -12,31 +13,65 @@
 
     <ui:composition template="/templates/library.xhtml">
         <ui:define name="content">
-            <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper" style="display: none; margin: auto;"/>
+            <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper"
+                            style="display: none; margin: auto;"/>
             <h:outputText value="#{msg.found_books} #{bookController.countAllBooks}" id="countAllBooks"/>
             <div class="book_list">
-                <h:panelGroup id="books">
+                <h:form id="books">
+
+                    <h:panelGroup id="admin_tools" style="display: block;"><!--Admin tools start-->
+                        <h:commandLink rendered="#{!bookController.editMode}">
+                            <h:outputText value="#{msg.add_book} "/>
+                            <f:ajax onevent="loading" execute="books" render="books"/>
+                        </h:commandLink>
+
+                        <h:commandLink action="#{bookController.switchEditMode}"
+                                       rendered="#{!bookController.editMode}">
+                            <h:outputText value=" #{msg.edit_book}"/>
+                            <f:ajax onevent="loading" execute="books" render="books"/>
+                        </h:commandLink>
+                        <h:commandButton action="#{bookController.updateBook}" rendered="#{bookController.editMode}"
+                                         value="#{msg.save_changes}">
+                            <f:ajax onevent="loading" execute="books" render="books"/>
+                        </h:commandButton>
+                        <h:commandButton immediate="true" action="#{bookController.switchEditMode}"
+                                         rendered="#{bookController.editMode}" value="#{msg.cancel_changes}">
+                            <f:ajax onevent="loading" execute="books" render="books"/>
+                        </h:commandButton>
+                    </h:panelGroup><!--Admin tools end-->
                     <ui:repeat value="#{bookController.bookList}" var="b">
                         <div class="book_info">
                             <div class="book_title">
-                                <p>#{b.name}</p>
+                                <p><h:outputText value="#{b.name}" rendered="#{!bookController.editMode}"/>
+                                    <h:inputText value="#{b.name}" rendered="#{bookController.editMode}"/></p>
                             </div>
                             <div class="book_image">
                                 <h:graphicImage value="/ShowImage?id=#{b.id}"/>
                             </div>
                             <div class="book_details">
-                                <br/><strong>ISBN:</strong> #{b.isbn}
-                                <br/><strong>Publisher:</strong> #{b.publisher}
-                                <br/><strong>Number of pages:</strong> #{b.pageCount}
-                                <br/><strong>The year of publishing:</strong> #{b.publishDate}
-                                <br/><strong>Author:</strong> #{b.author}
+                                <br/><strong>ISBN:</strong> <h:outputText value="#{b.isbn}"
+                                                                          rendered="#{!bookController.editMode}"/>
+                                <h:inputText value="#{b.isbn}" rendered="#{bookController.editMode}"/>
+                                <br/><strong>Publisher:</strong> <h:outputText value="#{b.publisher}"
+                                                                               rendered="#{!bookController.editMode}"/>
+                                <h:inputText value="#{b.publisher}" rendered="#{bookController.editMode}"/>
+                                <br/><strong>Number of pages:</strong> <h:outputText value="#{b.pageCount}"
+                                                                                     rendered="#{!bookController.editMode}"/>
+                                <h:inputText value="#{b.pageCount}" rendered="#{bookController.editMode}"/>
+                                <br/><strong>The year of publishing:</strong> <h:outputText value="#{b.publishDate}"
+                                                                                            rendered="#{!bookController.editMode}"/>
+                                <h:inputText value="#{b.publishDate}" rendered="#{bookController.editMode}"/>
+                                <br/><strong>Author:</strong> <h:outputText value="#{b.author}"
+                                                                            rendered="#{!bookController.editMode}"/>
+                                <h:inputText value="#{b.author}" rendered="#{bookController.editMode}"/>
                                 <p style="text-align: center; margin-top: 10px;"><h:outputLink
                                         value="#{request.contextPath}/PdfContent?id=#{b.id}"
-                                        target="_blank">#{msg.download_pdf}</h:outputLink></p>
+                                        target="_blank"
+                                        rendered="#{!bookController.editMode}">#{msg.download_pdf}</h:outputLink></p>
                             </div>
                         </div>
                     </ui:repeat>
-                </h:panelGroup>
+                </h:form>
             </div>
             <div class="pages">
                 <h:panelGroup id="pagesForm">
