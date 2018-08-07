@@ -133,6 +133,7 @@ public class BookController implements Serializable {
     SearchController searchController;
 
     public void getBooksBySearch() {
+        selectedPageNumber = 1;
         if (searchString.trim().length() == 0) {
             getAllBooks();
             return;
@@ -151,7 +152,6 @@ public class BookController implements Serializable {
 
         getBooks(sqlRequest.toString());
         selectedGenreId = 0;
-        selectedPageNumber = 1;
         selectedLetter = ' ';
         isSelectedAllBooks = false;
     }
