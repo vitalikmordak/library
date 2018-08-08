@@ -1,8 +1,11 @@
 package beans;
 
+import dao.UserDAO;
+
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 
 @Named
@@ -30,6 +33,17 @@ public class User implements Serializable {
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
+    }
+    //validate login
+    public String validateLogin() {
+        boolean valid = UserDAO.login(username, password);
+        if (valid) {
+            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+            session.setAttribute("username", username);
+            return "pages/books?faces-redirect=true";
+        } else {
+            return "index";
+        }
     }
 
 }

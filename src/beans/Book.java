@@ -1,6 +1,5 @@
 package beans;
 
-import controllers.BookController;
 import db.Database;
 
 import java.sql.Connection;
@@ -135,7 +134,7 @@ public class Book {
         } catch (SQLException e) {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, e);
         } finally {
-            BookController.closeConnections(connection, stat, rs);
+            Database.closeConnections(connection, stat, rs);
         }
     }
 
