@@ -73,7 +73,7 @@ public class BookController implements Serializable {
         } catch (SQLException e) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
         } finally {
-            closeConnections(connection, stat, rs);
+            Database.closeConnections(connection, stat, rs);
         }
     }
 
@@ -184,7 +184,7 @@ public class BookController implements Serializable {
         } catch (SQLException e) {
             Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
         } finally {
-            closeConnections(conn, preparedStat, null);
+            Database.closeConnections(conn, preparedStat, null);
         }
         cancel();
     }
@@ -204,16 +204,6 @@ public class BookController implements Serializable {
         return editMode;
     }
 
-    // Close connection to DB
-    public static void closeConnections(Connection connection, Statement stat, ResultSet rs) {
-        try {
-            if (stat != null) stat.close();
-            if (connection != null) connection.close();
-            if (rs != null) rs.close();
-        } catch (SQLException e) {
-            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
-        }
-    }
 
     /*
      *   Getters and Setters

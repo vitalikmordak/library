@@ -35,7 +35,7 @@
                     <f:validator validatorId="LoginValidator"/>
                     <f:ajax event="keyup" render="passwordError"/>
                 </h:inputSecret><br/>
-                <h:commandButton styleClass="form_button" id="login" action="pages/books?faces-redirect=true"
+                <h:commandButton styleClass="form_button" id="login" action="#{user.validateLogin}"
                                  value="LOGIN"/>
                 <p class="error_message">
                     <h:message id="usernameError" for="username"/><br/>
