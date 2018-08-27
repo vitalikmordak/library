@@ -1,6 +1,6 @@
 package servlets;
 
-import beans.Book;
+import entities.Book;
 import controllers.BookController;
 
 import javax.inject.Inject;
@@ -41,7 +41,7 @@ public class PdfContent extends HttpServlet {
                 }
             }
             // Downloading pdf
-            book.downloadPdf();
+//            book.downloadPdf();
             resp.setContentLength(book.getContent().length);
             out.write(book.getContent());
         }

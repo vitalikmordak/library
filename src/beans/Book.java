@@ -1,14 +1,5 @@
 package beans;
 
-import db.Database;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class Book {
 
     private long id;
@@ -121,21 +112,21 @@ public class Book {
 
     // Pdf downloading from DB when it's necessary
     public void downloadPdf() {
-        Statement stat = null;
-        ResultSet rs = null;
-        Connection connection = null;
-        try {
-            connection = Database.getConnection();
-            stat = connection.createStatement();
-            rs = stat.executeQuery("select content from book where id=" + this.getId());
-            while (rs.next()) {
-                this.setContent(rs.getBytes("content"));
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            Database.closeConnections(connection, stat, rs);
-        }
+//        Statement stat = null;
+//        ResultSet rs = null;
+//        Connection connection = null;
+//        try {
+//            connection = Database.getConnection();
+//            stat = connection.createStatement();
+//            rs = stat.executeQuery("select content from book where id=" + this.getId());
+//            while (rs.next()) {
+//                this.setContent(rs.getBytes("content"));
+//            }
+//        } catch (SQLException e) {
+//            Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, e);
+//        } finally {
+//            Database.closeConnections(connection, stat, rs);
+//        }
     }
 
 }

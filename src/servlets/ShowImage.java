@@ -1,6 +1,6 @@
 package servlets;
 
-import beans.Book;
+import entities.Book;
 import controllers.BookController;
 
 import javax.inject.Inject;
