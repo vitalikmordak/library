@@ -1,9 +1,7 @@
 package servlets;
 
-import controllers.BookController;
 import db.Database;
 
-import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +11,6 @@ import java.io.OutputStream;
 
 @WebServlet("/ShowImage")
 public class ShowImage extends HttpServlet {
-    @Inject
-    BookController bookController;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -34,16 +30,6 @@ public class ShowImage extends HttpServlet {
             byte[] image = Database.getInstance().getImage(id);
             resp.setContentLength(image.length);
             out.write(image);
-//            ArrayList<Book> list = bookController.getBookList();
-//            Book book = new Book();
-//            for (Book b : list) {
-//                if (b.getId() == id) {
-//                    book = b;
-//                }
-//            }
-//            resp.setContentLength(book.getImage().length);
-//            out.write(book.getImage());
         }
     }
-
 }
