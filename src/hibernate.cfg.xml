@@ -7,14 +7,15 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">080395vm</property>
         <!--<property name="hibernate.connection.datasource">jdbc/library</property>-->
         <property name="current_session_context_class">thread</property>
+        <property name="hibernate.connection.password">080395vm</property>
+        <property name="hibernate.connection.username">root</property>
         <property name="show_sql">true</property>
         <mapping class="entities.Author"/>
         <mapping class="entities.Book"/>
         <mapping class="entities.Genre"/>
         <mapping class="entities.Publisher"/>
+        <mapping class="entities.Users"/>
     </session-factory>
 </hibernate-configuration>

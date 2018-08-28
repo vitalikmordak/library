@@ -115,13 +115,16 @@ public class Database {
     }
 
     private Object getFieldValue(String field, Long id) {
+        getSession().getTransaction().begin();
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<Book> root = criteriaQuery.from(Book.class);
         criteriaQuery.select(root.get(field));
 
         criteriaQuery.where(criteriaBuilder.equal(root.get("id"), id));
-        return getSession().createQuery(criteriaQuery).getSingleResult();
+        Object book = getSession().createQuery(criteriaQuery).getSingleResult();
+        getSession().getTransaction().commit();
+        return book;
     }
 
     public Author getAuthor(long id) {

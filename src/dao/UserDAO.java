@@ -1,7 +1,7 @@
 package dao;
 
 public class UserDAO {
-    public static boolean login(String user, String password) {
+    public static boolean login(String username, String password) {
 //        Connection conn = null;
 //        PreparedStatement stat = null;
 //        try {

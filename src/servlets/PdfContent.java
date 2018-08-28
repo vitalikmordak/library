@@ -1,7 +1,7 @@
 package servlets;
 
-import entities.Book;
 import controllers.BookController;
+import db.Database;
 
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 @WebServlet("/PdfContent")
 public class PdfContent extends HttpServlet {
@@ -31,19 +30,21 @@ public class PdfContent extends HttpServlet {
         resp.setContentType("application/pdf");
 
         try (OutputStream out = resp.getOutputStream()) {
-            int id = Integer.parseInt(req.getParameter("id"));
-
-            ArrayList<Book> list = bookController.getBookList();
-            Book book = new Book();
-            for (Book b : list) {
-                if (b.getId() == id) {
-                    book = b;
-                }
-            }
+            long id = Long.parseLong(req.getParameter("id"));
+            byte[] content = Database.getInstance().getContent(id);
+            resp.setContentLength(content.length);
+            out.write(content);
+//            ArrayList<Book> list = bookController.getBookList();
+//            Book book = new Book();
+//            for (Book b : list) {
+//                if (b.getId() == id) {
+//                    book = b;
+//                }
+//            }
             // Downloading pdf
 //            book.downloadPdf();
-            resp.setContentLength(book.getContent().length);
-            out.write(book.getContent());
+//            resp.setContentLength(book.getContent().length);
+//            out.write(book.getContent());
         }
 
 

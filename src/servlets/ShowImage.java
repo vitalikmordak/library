@@ -1,7 +1,7 @@
 package servlets;
 
-import entities.Book;
 import controllers.BookController;
+import db.Database;
 
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 @WebServlet("/ShowImage")
 public class ShowImage extends HttpServlet {
@@ -31,16 +30,19 @@ public class ShowImage extends HttpServlet {
         resp.setContentType("image/jpg");
 
         try (OutputStream out = resp.getOutputStream()) {
-            int id = Integer.parseInt(req.getParameter("id"));
-            ArrayList<Book> list = bookController.getBookList();
-            Book book = new Book();
-            for (Book b : list) {
-                if (b.getId() == id) {
-                    book = b;
-                }
-            }
-            resp.setContentLength(book.getImage().length);
-            out.write(book.getImage());
+            long id = Long.parseLong(req.getParameter("id"));
+            byte[] image = Database.getInstance().getImage(id);
+            resp.setContentLength(image.length);
+            out.write(image);
+//            ArrayList<Book> list = bookController.getBookList();
+//            Book book = new Book();
+//            for (Book b : list) {
+//                if (b.getId() == id) {
+//                    book = b;
+//                }
+//            }
+//            resp.setContentLength(book.getImage().length);
+//            out.write(book.getImage());
         }
     }
 
