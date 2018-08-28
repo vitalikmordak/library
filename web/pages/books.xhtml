@@ -54,7 +54,7 @@
                                                                           rendered="#{!b.edit}"/>
                                 <h:inputText value="#{b.isbn}" rendered="#{bookController.editMode and b.edit}"
                                              style=" width: 120px;"/>
-                                <br/><strong>Publisher:</strong> <h:outputText value="#{b.publisher}"
+                                <br/><strong>Publisher:</strong> <h:outputText value="#{b.publisher.name}"
                                                                                rendered="#{!b.edit}"/>
                                 <h:inputText value="#{b.publisher}" rendered="#{bookController.editMode and b.edit}"
                                              style=" width: 120px;"/>
@@ -66,7 +66,7 @@
                                                                                             rendered="#{!b.edit}"/>
                                 <h:inputText value="#{b.publishDate}" rendered="#{bookController.editMode and b.edit}"
                                              style=" width: 120px;"/>
-                                <br/><strong>Author:</strong> <h:outputText value="#{b.author}"
+                                <br/><strong>Author:</strong> <h:outputText value="#{b.author.fio}"
                                                                             rendered="#{!b.edit}"/>
                                 <h:inputText value="#{b.author}" rendered="#{bookController.editMode and b.edit}"
                                              style=" width: 120px;"/>

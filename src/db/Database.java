@@ -1,9 +1,9 @@
 package db;
 
-import entities.HibernateUtil;
 import entities.Author;
 import entities.Book;
 import entities.Genre;
+import entities.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -56,42 +56,61 @@ public class Database {
     }
 
     public List<Book> getBooksByGenre(Long genreId) {
+        getSession().getTransaction().begin();
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<Book> root = criteriaQuery.from(Book.class);
-
-        criteriaQuery.where(criteriaBuilder.equal(root.get("genre_id"), genreId));
-        return getSession().createQuery(criteriaQuery).getResultList();
+        criteriaQuery.select(root);
+        criteriaQuery.where(criteriaBuilder.equal(root.get("genreId"), genreId));
+        List<Book> resultList = getSession().createQuery(criteriaQuery).getResultList();
+        getSession().getTransaction().commit();
+        return resultList;
     }
 
     public List<Book> getBooksByLetter(Character letter) {
 
-        return getBookList("name", letter.toString());
+        return getBookList("name", letter.toString(), "start");
     }
 
     public List<Book> getBooksByAuthor(String authorName) {
 
-        return getBookList("author", authorName);
+        return getBookList("author", authorName, "anywhere");
     }
 
     public List<Book> getBooksByName(String bookName) {
 
-        return getBookList("name", bookName);
+        return getBookList("name", bookName, "anywhere");
     }
 
-    private List<Book> getBookList(String field, String value) {
+    private List<Book> getBookList(String field, String value, String matchMode) {
+        getSession().getTransaction().begin();
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<Book> root = criteriaQuery.from(Book.class);
-
-        criteriaQuery.where(criteriaBuilder.like(root.get(field), value));
-        return getSession().createQuery(criteriaQuery).getResultList();
+        String condition = "";
+        switch (matchMode) {
+            case "start":
+                condition = value + "%";
+                break;
+            case "anywhere":
+                condition = "%" + value + "%";
+                break;
+        }
+        if (field.equals("author")) {
+            criteriaQuery.where(criteriaBuilder.like(root.get(field).get("fio"), condition));
+        } else {
+            criteriaQuery.where(criteriaBuilder.like(root.get(field), condition));
+        }
+        List<Book> resultList = getSession().createQuery(criteriaQuery).getResultList();
+        getSession().getTransaction().commit();
+        return resultList;
     }
 
-    public byte[] getContent(Long id){
+    public byte[] getContent(Long id) {
         return (byte[]) getFieldValue("content", id);
     }
-    public byte[] getImage(Long id){
+
+    public byte[] getImage(Long id) {
         return (byte[]) getFieldValue("image", id);
     }
 
@@ -105,7 +124,7 @@ public class Database {
         return getSession().createQuery(criteriaQuery).getSingleResult();
     }
 
-    public Author getAuthor(Long id){
+    public Author getAuthor(long id) {
         return (Author) getSession().get(Author.class, id);
     }
 
