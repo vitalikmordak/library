@@ -31,7 +31,8 @@ public class Database {
     public List<Book> getAllBooks() {
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
-        criteriaQuery.from(Book.class);
+        Root<Book> root = criteriaQuery.from(Book.class);
+        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
         return getSession().createQuery(criteriaQuery).getResultList();
     }
 
@@ -45,7 +46,8 @@ public class Database {
     public List<Genre> getAllGenres() {
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Genre> criteriaQuery = criteriaBuilder.createQuery(Genre.class);
-        criteriaQuery.from(Genre.class);
+        Root<Genre> root = criteriaQuery.from(Genre.class);
+        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
         return getSession().createQuery(criteriaQuery).getResultList();
     }
 
@@ -55,6 +57,7 @@ public class Database {
         Root<Book> root = criteriaQuery.from(Book.class);
         criteriaQuery.select(root);
         criteriaQuery.where(criteriaBuilder.equal(root.get("genreId"), genreId));
+        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
         return getSession().createQuery(criteriaQuery).getResultList();
     }
 
@@ -91,6 +94,7 @@ public class Database {
         } else {
             criteriaQuery.where(criteriaBuilder.like(root.get(field), condition));
         }
+        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
         return getSession().createQuery(criteriaQuery).getResultList();
     }
 
