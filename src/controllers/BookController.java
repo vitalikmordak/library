@@ -86,12 +86,6 @@ public class BookController implements Serializable {
 
     public void getAllBooks() {
         bookList = Database.getInstance().getAllBooks();
-/*        getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-                "inner join author a on b.author_id=a.id " +
-                "inner join genre g on b.genre_id=g.id " +
-                "inner join publisher p on b.publisher_id=p.id " +
-                "order by b.name");*/
         isSelectedAllBooks = true;
         selectedLetter = ' ';
         selectedGenreId = 0;
@@ -103,12 +97,6 @@ public class BookController implements Serializable {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedGenreId = Long.valueOf(params.get("genre_id"));
         bookList = Database.getInstance().getBooksByGenre(selectedGenreId);
-        /*getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-                "inner join author a on b.author_id=a.id " +
-                "inner join genre g on b.genre_id=g.id " +
-                "inner join publisher p on b.publisher_id=p.id " +
-                "where genre_id=" + selectedGenreId + " order by b.name ");*/
         selectedPageNumber = 1;
         selectedLetter = ' ';
         isSelectedAllBooks = false;
@@ -118,12 +106,6 @@ public class BookController implements Serializable {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedLetter = params.get("letter").charAt(0);
         bookList = Database.getInstance().getBooksByLetter(selectedLetter);
-       /* getBooks("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-                "inner join author a on b.author_id=a.id " +
-                "inner join genre g on b.genre_id=g.id " +
-                "inner join publisher p on b.publisher_id=p.id " +
-                "where substr(b.name, 1, 1)='" + selectedLetter + "' order by b.name ");*/
         selectedGenreId = 0;
         selectedPageNumber = 1;
         isSelectedAllBooks = false;
@@ -139,20 +121,13 @@ public class BookController implements Serializable {
             return;
         }
         SearchType type = searchController.getSearchType();
-       /* StringBuilder sqlRequest = new StringBuilder("select b.id, b.name, b.isbn, b.page_count, b.publish_year, " +
-                "p.name as publisher, a.fio as author, g.name as genre, b.image from book b " +
-                "inner join author a on b.author_id=a.id " +
-                "inner join genre g on b.genre_id=g.id " +
-                "inner join publisher p on b.publisher_id=p.id ");*/
+
         if (type == SearchType.AUTHOR) {
             bookList = Database.getInstance().getBooksByAuthor(searchString);
-//            sqlRequest.append("where lower(a.fio) like '%").append(searchString.toLowerCase()).append("%' order by b.name ");
         } else if (type == SearchType.TITLE) {
             bookList = Database.getInstance().getBooksByName(searchString);
-//            sqlRequest.append("where lower(b.name) like '%").append(searchString.toLowerCase()).append("%' order by b.name ");
         }
 
-//        getBooks(sqlRequest.toString());
         selectedGenreId = 0;
         selectedLetter = ' ';
         isSelectedAllBooks = false;
@@ -161,7 +136,6 @@ public class BookController implements Serializable {
     public void selectPage() {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         selectedPageNumber = Integer.valueOf(params.get("page_number"));
-//        getBooks(currentSql);
     }
 
     // Update book data
