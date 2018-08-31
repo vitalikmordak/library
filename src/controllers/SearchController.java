@@ -28,6 +28,7 @@ public class SearchController {
     public Map<String, SearchType> getSearchList() {
         return searchList;
     }
+
     // get letters array
     public Character[] getLetters() {
         return "abcdefghijklmnopqrstuvwxyz".toUpperCase().chars().mapToObj(c -> (char) c).toArray(Character[]::new);

@@ -23,10 +23,13 @@ public class ShowImage extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         processRequest(req, resp);
     }
-    @Inject BookController bookController;
+
+    @Inject
+    BookController bookController;
+
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("image/jpg");
-    // get Images from request collection instead of from DB
+        // get Images from request collection instead of from DB
         try (OutputStream out = resp.getOutputStream()) {
             long id = Long.parseLong(req.getParameter("id"));
             Book book = bookController.getBookList().stream().filter(p -> p.getId() == id).findFirst().get();

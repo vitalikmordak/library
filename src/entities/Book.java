@@ -176,6 +176,7 @@ public class Book {
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
+
     @Transient
     public boolean isEdit() {
         return edit;

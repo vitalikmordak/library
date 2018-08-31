@@ -56,7 +56,8 @@
                                              style=" width: 120px;"/>
                                 <br/><strong>Publisher:</strong> <h:outputText value="#{b.publisher.name}"
                                                                                rendered="#{!b.edit}"/>
-                                <h:inputText value="#{b.publisher.name}" rendered="#{bookController.editMode and b.edit}"
+                                <h:inputText value="#{b.publisher.name}"
+                                             rendered="#{bookController.editMode and b.edit}"
                                              style=" width: 120px;"/>
                                 <br/><strong>Number of pages:</strong> <h:outputText value="#{b.pageCount}"
                                                                                      rendered="#{!b.edit}"/>

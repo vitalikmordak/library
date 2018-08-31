@@ -75,7 +75,7 @@ public class BookController implements Serializable {
     }*/
 
     private void fillPageNumbers(long countAllBooks, int countBooksOnPage) {
-        int pageCount = countAllBooks > 0 ? (int) (countAllBooks / countBooksOnPage)+1 : 0;
+        int pageCount = countAllBooks > 0 ? (int) (countAllBooks / countBooksOnPage) + 1 : 0;
 
         pageNumber.clear(); // clear before each request
         for (int i = 1; i <= pageCount; i++) {
