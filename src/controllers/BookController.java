@@ -221,6 +221,7 @@ public class BookController implements Serializable {
     }
 
     public long getCountAllBooks() {
+        countAllBooks = bookList.size();
         return countAllBooks;
     }
 
