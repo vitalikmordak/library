@@ -106,6 +106,7 @@ public class Database {
         criteria = criteriaQuery;
         runCriteria();
     }
+
     // method that handles criteria queries per page
     @SuppressWarnings("unchecked")
     public void runCriteria() {

@@ -11,8 +11,7 @@ public class Paginator<T> {
     private int booksOnPage = 3; // number of books displayed on the page
     private long countAllBooks = 0; // number of all books
     private List<Integer> pageNumber = new ArrayList<>(); // number of pages for pagination
-
-    private List<T> list;
+    private List<T> list; //Book list
 
     public List<Integer> getPageNumber() {
         int pageCount;

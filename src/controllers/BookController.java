@@ -10,14 +10,11 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Named
 @SessionScoped
 public class BookController implements Serializable {
-    private List<Book> bookList;
     private String searchString;
     private long selectedGenreId; // selected genre
     private char selectedLetter; // selected letter
@@ -26,10 +23,8 @@ public class BookController implements Serializable {
     private Paginator<Book> paginator = new Paginator<>();
     private Database dbInstance = Database.getInstance();
 
-
     public BookController() {
         getAllBooks();
-        bookList = paginator.getList();
     }
 
     public void getAllBooks() {
@@ -76,28 +71,7 @@ public class BookController implements Serializable {
 
     // Update book data
     public void updateBook() {
-       /* PreparedStatement preparedStat = null;
-        Connection conn = null;
-        try {
-            conn = Database.getConnection();
-            preparedStat = conn.prepareStatement("update book set name=?, isbn=?, page_count=?, publish_year=? where id=?");
-
-            for (Book book : bookList) {
-                if (!book.isEdit()) continue; // if current book does not need editing, skip it
-                preparedStat.setString(1, book.getName());
-                preparedStat.setString(2, book.getIsbn());
-//                preparedStat.setString(3,book.getAuthor());
-                preparedStat.setInt(3, book.getPageCount());
-                preparedStat.setInt(4, book.getPublishDate());
-                preparedStat.setLong(5, book.getId());
-                preparedStat.addBatch();
-            }
-            preparedStat.executeBatch();
-        } catch (SQLException e) {
-            Logger.getLogger(BookController.class.getName()).log(Level.SEVERE, null, e);
-        } finally {
-            Database.closeConnections(conn, preparedStat, null);
-        }*/
+        //TODO: realization in method
         cancel();
     }
 
@@ -109,7 +83,8 @@ public class BookController implements Serializable {
     public void cancel() {
         switchEditMode();
         // clear checkboxes
-        bookList.forEach(book -> book.setEdit(false));
+
+        paginator.getList().forEach(book -> book.setEdit(false));
     }
 
     public boolean getEditMode() {
@@ -124,14 +99,9 @@ public class BookController implements Serializable {
         this.selectedAllBooks = selectedAllBooks;
     }
 
-
     /*
      *   Getters and Setters
      */
-    public ArrayList<Book> getBookList() {
-        return (ArrayList<Book>) bookList;
-    }
-
     public String getSearchString() {
         return searchString;
     }
