@@ -1,11 +1,13 @@
 package db;
 
+import beans.Paginator;
 import entities.Author;
 import entities.Book;
 import entities.Genre;
 import entities.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,6 +17,8 @@ import java.util.List;
 public class Database {
     private SessionFactory sessionFactory;
     private static Database database;
+    private Paginator currentPaginator = new Paginator();
+    private CriteriaQuery criteria;
 
     private Database() {
         sessionFactory = HibernateUtil.getSessionFactory();
@@ -28,12 +32,15 @@ public class Database {
         return sessionFactory.getCurrentSession();
     }
 
-    public List<Book> getAllBooks() {
+    public void getAllBooks(Paginator paginator) {
+        currentPaginator = paginator;
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
-        Root<Book> root = criteriaQuery.from(Book.class);
-        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
-        return getSession().createQuery(criteriaQuery).getResultList();
+        Root<Book> book = criteriaQuery.from(Book.class);
+        criteriaQuery.select(book).orderBy(criteriaBuilder.asc(book.get("name")));
+        currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
+        criteria = criteriaQuery;
+        runCriteria();
     }
 
     public List<Author> getAllAuthors() {
@@ -51,32 +58,32 @@ public class Database {
         return getSession().createQuery(criteriaQuery).getResultList();
     }
 
-    public List<Book> getBooksByGenre(Long genreId) {
+    public void getBooksByGenre(Long genreId, Paginator paginator) {
+        currentPaginator = paginator;
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
-        Root<Book> root = criteriaQuery.from(Book.class);
-        criteriaQuery.select(root);
-        criteriaQuery.where(criteriaBuilder.equal(root.get("genreId"), genreId));
-        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
-        return getSession().createQuery(criteriaQuery).getResultList();
+        Root<Book> book = criteriaQuery.from(Book.class);
+        criteriaQuery.select(book).where(criteriaBuilder.equal(book.get("genreId"), genreId));
+        criteriaQuery.orderBy(criteriaBuilder.asc(book.get("name")));
+        currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
+        criteria = criteriaQuery;
+        runCriteria();
     }
 
-    public List<Book> getBooksByLetter(Character letter) {
-
-        return getBookList("name", letter.toString(), "start");
+    public void getBooksByLetter(Character letter, Paginator paginator) {
+        getBookList("name", letter.toString(), "start", paginator);
     }
 
-    public List<Book> getBooksByAuthor(String authorName) {
-
-        return getBookList("author", authorName, "anywhere");
+    public void getBooksByAuthor(String authorName, Paginator paginator) {
+        getBookList("author", authorName, "anywhere", paginator);
     }
 
-    public List<Book> getBooksByName(String bookName) {
-
-        return getBookList("name", bookName, "anywhere");
+    public void getBooksByName(String bookName, Paginator paginator) {
+        getBookList("name", bookName, "anywhere", paginator);
     }
 
-    private List<Book> getBookList(String field, String value, String matchMode) {
+    private void getBookList(String field, String value, String matchMode, Paginator paginator) {
+        currentPaginator = paginator;
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<Book> root = criteriaQuery.from(Book.class);
@@ -95,7 +102,19 @@ public class Database {
             criteriaQuery.where(criteriaBuilder.like(root.get(field), condition));
         }
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
-        return getSession().createQuery(criteriaQuery).getResultList();
+        currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
+        criteria = criteriaQuery;
+        runCriteria();
+    }
+    // method that handles criteria queries per page
+    @SuppressWarnings("unchecked")
+    public void runCriteria() {
+        Query<Book> query1 = getSession().createQuery(criteria);
+
+        List<Book> list = query1.setFirstResult(currentPaginator.getFirstResult())
+                .setMaxResults(currentPaginator.getBooksOnPage()).getResultList();
+
+        currentPaginator.setList(list);
     }
 
     public byte[] getContent(Long id) {

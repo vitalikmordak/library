@@ -32,7 +32,8 @@ public class ShowImage extends HttpServlet {
         // get Images from request collection instead of from DB
         try (OutputStream out = resp.getOutputStream()) {
             long id = Long.parseLong(req.getParameter("id"));
-            Book book = bookController.getBookList().stream().filter(p -> p.getId() == id).findFirst().get();
+            Book book = bookController.getPaginator().getList().stream().filter(p -> p.getId() == id).findFirst().get();
+//            Book book = bookController.getBookList().stream().filter(p -> p.getId() == id).findFirst().get();
             byte[] image = book.getImage();
             resp.setContentLength(image.length);
             out.write(image);

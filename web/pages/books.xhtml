@@ -15,7 +15,7 @@
         <ui:define name="content">
             <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper"
                             style="display: none; margin: auto;"/>
-            <h:outputText value="#{msg.found_books} #{bookController.countAllBooks}" id="countAllBooks"/>
+            <h:outputText value="#{msg.found_books} #{bookController.paginator.countAllBooks}" id="countAllBooks"/>
             <div class="book_list">
                 <h:form id="books">
 
@@ -39,7 +39,7 @@
                             <f:ajax onevent="loading" execute="books" render="books"/>
                         </h:commandButton>
                     </h:panelGroup><!--Admin tools end-->
-                    <ui:repeat value="#{bookController.bookList}" var="b">
+                    <ui:repeat value="#{bookController.paginator.list}" var="b">
                         <div class="book_info">
                             <div class="book_title">
                                 <p><h:outputText value="#{b.name}" rendered="#{!bookController.editMode}"/>
@@ -85,11 +85,11 @@
             </div>
             <div class="pages">
                 <h:panelGroup id="pagesForm">
-                    <h:form rendered="#{bookController.countAllBooks>bookController.booksOnPage}">
+                    <h:form rendered="#{bookController.paginator.countAllBooks>0}">
                         #{msg.pages}
-                        <ui:repeat value="#{bookController.pageNumber}" var="p">
+                        <ui:repeat value="#{bookController.paginator.pageNumber}" var="p">
                             <h:commandLink value="#{p} "
-                                           styleClass="#{p == bookController.selectedPageNumber ? 'selected_item':''}">
+                                           styleClass="#{p == bookController.paginator.selectedPageNumber ? 'selected_item':''}">
                                 <f:param name="page_number" value="#{p}"/>
                                 <f:ajax onevent="loading" event="action"
                                         render="pagesForm books countAllBooks :lettersForm :genresList :searchForm"
