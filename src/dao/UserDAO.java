@@ -1,25 +1,27 @@
 package dao;
 
+import entities.HibernateUtil;
+import entities.Users;
+import org.hibernate.Session;
+
+import javax.persistence.NoResultException;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 public class UserDAO {
+
     public static boolean login(String username, String password) {
-//        Connection conn = null;
-//        PreparedStatement stat = null;
-//        try {
-//            conn = Database.getConnection();
-//            stat = conn.prepareStatement("select  user_name, user_pass from users where user_name=? and user_pass=?");
-//
-//            stat.setString(1, user);
-//            stat.setString(2, password);
-//
-//            ResultSet rs = stat.executeQuery();
-//            if (rs.next()) return true;
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return false;
-//        } finally {
-//            Database.closeConnections(conn, stat, null);
-//        }
-//        return false;
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Users> criteriaQuery = criteriaBuilder.createQuery(Users.class);
+        Root<Users> user = criteriaQuery.from(Users.class);
+        try {
+            criteriaQuery.select(user).where(criteriaBuilder.equal(user.get("userName"), username), criteriaBuilder.equal(user.get("userPass"), password));
+            session.createQuery(criteriaQuery).getSingleResult();
+        } catch (NoResultException e) {
+            return false;
+        }
         return true;
     }
 }

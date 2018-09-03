@@ -23,19 +23,19 @@
         <div class="login_div">
             <h:form styleClass="login_form">
                 <p class="title">#{msg.login_form_title}</p>
-                <h:inputText styleClass="login_form_input" id="username" value="#{user.username}"
+                <h:inputText styleClass="login_form_input" id="username" value="#{userLogin.username}"
                              a:placeholder="#{msg.placeholder_username}" required="true"
                              requiredMessage="#{msg.login_required}">
                     <f:validator validatorId="LoginValidator"/>
                     <f:ajax event="keyup" render="usernameError"/>
                 </h:inputText><br/>
-                <h:inputSecret styleClass="login_form_input" id="password" value="#{user.password}"
+                <h:inputSecret styleClass="login_form_input" id="password" value="#{userLogin.password}"
                                a:placeholder="#{msg.placeholder_password}" required="true"
                                requiredMessage="#{msg.password_required}">
                     <f:validator validatorId="LoginValidator"/>
                     <f:ajax event="keyup" render="passwordError"/>
                 </h:inputSecret><br/>
-                <h:commandButton styleClass="form_button" id="login" action="#{user.validateLogin}"
+                <h:commandButton styleClass="form_button" id="login" action="#{userLogin.validateLogin}"
                                  value="LOGIN"/>
                 <p class="error_message">
                     <h:message id="usernameError" for="username"/><br/>

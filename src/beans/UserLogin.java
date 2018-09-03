@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Named
 @SessionScoped
-public class User implements Serializable {
+public class UserLogin implements Serializable {
     private String username;
     private String password;
 
@@ -34,6 +34,7 @@ public class User implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/index?faces-redirect=true";
     }
+
     //validate login
     public String validateLogin() {
         boolean valid = UserDAO.login(username, password);
@@ -45,5 +46,4 @@ public class User implements Serializable {
             return "index";
         }
     }
-
 }

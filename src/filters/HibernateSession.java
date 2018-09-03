@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 // Filter before each request to the DB, the transaction will begin and then commit.
-@WebFilter(filterName = "HibernateSession", urlPatterns = {"/pages/*", "/PdfContent"})
+@WebFilter(filterName = "HibernateSession", urlPatterns = {"/pages/*", "/PdfContent", "/index.xhtml"})
 public class HibernateSession implements Filter {
     private SessionFactory sessionFactory;
 
