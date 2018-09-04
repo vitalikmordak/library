@@ -21,7 +21,6 @@ public class BookController implements Serializable {
     private boolean selectedAllBooks = false; // Is "All books" selected?
     private boolean editMode; // to ON|OFF edit mode
     private Paginator<Book> paginator = new Paginator<>();
-    private Database dbInstance = Database.getInstance();
 
     public BookController() {
         getAllBooks();
@@ -29,20 +28,20 @@ public class BookController implements Serializable {
 
     public void getAllBooks() {
         setDefaultValues(0, ' ', true);
-        dbInstance.getAllBooks(paginator);
+        Database.getInstance().getAllBooks(paginator);
     }
 
     // Create bookList by genre
     public void getBooksByGenre() {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         setDefaultValues(Long.valueOf(params.get("genre_id")), ' ', false);
-        dbInstance.getBooksByGenre(selectedGenreId, paginator);
+        Database.getInstance().getBooksByGenre(selectedGenreId, paginator);
     }
 
     public void getBooksByLetter() {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         setDefaultValues(0, params.get("letter").charAt(0), false);
-        dbInstance.getBooksByLetter(selectedLetter, paginator);
+        Database.getInstance().getBooksByLetter(selectedLetter, paginator);
     }
 
     @Inject
@@ -57,16 +56,16 @@ public class BookController implements Serializable {
         SearchType type = searchController.getSearchType();
 
         if (type == SearchType.AUTHOR) {
-            dbInstance.getBooksByAuthor(searchString, paginator);
+            Database.getInstance().getBooksByAuthor(searchString, paginator);
         } else if (type == SearchType.TITLE) {
-            dbInstance.getBooksByName(searchString, paginator);
+            Database.getInstance().getBooksByName(searchString, paginator);
         }
     }
 
     public void selectPage() {
         Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         paginator.setSelectedPageNumber(Integer.valueOf(params.get("page_number")));
-        dbInstance.runCriteria();
+        Database.getInstance().runCriteria();
     }
 
     // Update book data

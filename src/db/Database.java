@@ -25,7 +25,7 @@ public class Database {
     }
 
     public static Database getInstance() {
-        return database == null ? new Database() : database;
+        return database == null ? database = new Database() : database;
     }
 
     private Session getSession() {
