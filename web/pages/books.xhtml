@@ -19,7 +19,8 @@
             <div class="book_list">
                 <h:form id="books">
 
-                    <h:panelGroup id="admin_tools" style="display: block;"><!--Admin tools start-->
+                    <h:panelGroup id="admin_tools" style="display: block;"
+                                  rendered="#{userLogin.access}"><!--Admin tools start-->
                         <h:commandLink rendered="#{!bookController.editMode}">
                             <h:outputText value="#{msg.add_book} "/>
                             <f:ajax onevent="loading" execute="books" render="books"/>
@@ -76,7 +77,7 @@
                                         target="_blank"
                                         rendered="#{!bookController.editMode}">#{msg.download_pdf}</h:outputLink></p>
                                 <p style="text-align: center;"><h:selectBooleanCheckbox value="#{b.edit}"
-                                                                                        rendered="#{!bookController.editMode}"/>
+                                                                                        rendered="#{!bookController.editMode and userLogin.access}"/>
                                 </p>
                             </div>
                         </div>
