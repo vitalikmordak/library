@@ -14,6 +14,8 @@ public class UserLogin implements Serializable {
     private String username;
     private String password;
 
+    private boolean access;
+
     public String getUsername() {
         return username;
     }
@@ -36,14 +38,20 @@ public class UserLogin implements Serializable {
     }
 
     //validate login
+
     public String validateLogin() {
         boolean valid = UserDAO.login(username, password);
         if (valid) {
             HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
             session.setAttribute("username", username);
+            access = UserDAO.editModeAccess(username); // check if user has role = admin
             return "pages/books?faces-redirect=true";
         } else {
             return "index";
         }
+    }
+
+    public boolean isAccess() {
+        return access;
     }
 }

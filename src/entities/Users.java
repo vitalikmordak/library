@@ -1,16 +1,14 @@
 package entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-public class Users implements Serializable {
+public class Users {
     private String userName;
     private String userPass;
+    private Collection<UserRoles> userRolesByUserName;
 
     @Id
     @Column(name = "user_name")
@@ -44,5 +42,14 @@ public class Users implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(userName, userPass);
+    }
+
+    @OneToMany(mappedBy = "usersByUserName")
+    public Collection<UserRoles> getUserRolesByUserName() {
+        return userRolesByUserName;
+    }
+
+    public void setUserRolesByUserName(Collection<UserRoles> userRolesByUserName) {
+        this.userRolesByUserName = userRolesByUserName;
     }
 }
