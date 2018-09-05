@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.Map;
 
 @Named
 @ApplicationScoped
-public class GenreController implements Converter {
+public class GenreController implements Serializable, Converter {
     private List<Genre> genreList;
     private List<SelectItem> selectItems = new ArrayList<>();
     private Map<Long, Genre> genreMap;

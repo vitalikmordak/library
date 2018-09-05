@@ -11,10 +11,7 @@ public class Book {
     private byte[] content;
     private Integer pageCount;
     private String isbn;
-    private Long genreId;
-    private Long authorId;
     private Integer publishDate;
-    private Long publisherId;
     private byte[] image;
     private Genre genre;
     private Author author;
@@ -73,26 +70,6 @@ public class Book {
     }
 
     @Basic
-    @Column(name = "genre_id")
-    public Long getGenreId() {
-        return genreId;
-    }
-
-    public void setGenreId(Long genreId) {
-        this.genreId = genreId;
-    }
-
-    @Basic
-    @Column(name = "author_id")
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
-    }
-
-    @Basic
     @Column(name = "publish_year")
     public Integer getPublishDate() {
         return publishDate;
@@ -100,16 +77,6 @@ public class Book {
 
     public void setPublishDate(Integer publishYear) {
         this.publishDate = publishYear;
-    }
-
-    @Basic
-    @Column(name = "publisher_id")
-    public Long getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(Long publisherId) {
-        this.publisherId = publisherId;
     }
 
     @Basic
@@ -132,23 +99,20 @@ public class Book {
                 Arrays.equals(content, book.content) &&
                 Objects.equals(pageCount, book.pageCount) &&
                 Objects.equals(isbn, book.isbn) &&
-                Objects.equals(genreId, book.genreId) &&
-                Objects.equals(authorId, book.authorId) &&
                 Objects.equals(publishDate, book.publishDate) &&
-                Objects.equals(publisherId, book.publisherId) &&
                 Arrays.equals(image, book.image);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, name, pageCount, isbn, genreId, authorId, publishDate, publisherId);
+        int result = Objects.hash(id, name, pageCount, isbn, publishDate);
         result = 31 * result + Arrays.hashCode(content);
         result = 31 * result + Arrays.hashCode(image);
         return result;
     }
 
     @ManyToOne
-    @JoinColumn(name = "genre_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "genre_id", referencedColumnName = "id", nullable = false)
     public Genre getGenre() {
         return genre;
     }
@@ -157,8 +121,8 @@ public class Book {
         this.genre = genre;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @ManyToOne/*(cascade = CascadeType.ALL)*/
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
     public Author getAuthor() {
         return author;
     }
@@ -168,7 +132,7 @@ public class Book {
     }
 
     @ManyToOne
-    @JoinColumn(name = "publisher_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "publisher_id", referencedColumnName = "id", nullable = false)
     public Publisher getPublisher() {
         return publisher;
     }

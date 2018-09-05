@@ -57,9 +57,10 @@
                                              style=" width: 120px;"/>
                                 <br/><strong>Publisher:</strong> <h:outputText value="#{b.publisher.name}"
                                                                                rendered="#{!b.edit}"/>
-                                <h:inputText value="#{b.publisher.name}"
-                                             rendered="#{bookController.editMode and b.edit}"
-                                             style=" width: 120px;"/>
+                                <h:selectOneMenu rendered="#{bookController.editMode and b.edit}" value="#{b.publisher}"
+                                                 converter="#{publisherController}">
+                                    <f:selectItems value="#{publisherController.selectItems}"/>
+                                </h:selectOneMenu>
                                 <br/><strong>Number of pages:</strong> <h:outputText value="#{b.pageCount}"
                                                                                      rendered="#{!b.edit}"/>
                                 <h:inputText value="#{b.pageCount}" rendered="#{bookController.editMode and b.edit}"
@@ -70,15 +71,13 @@
                                              style=" width: 120px;"/>
                                 <br/><strong>Author:</strong> <h:outputText value="#{b.author.fio}"
                                                                             rendered="#{!b.edit}"/>
-                                <!--<h:inputText value="#{b.author.fio}" rendered="#{bookController.editMode and b.edit}"-->
-                                <!--style=" width: 120px;"/>-->
                                 <h:selectOneMenu rendered="#{bookController.editMode and b.edit}"
-                                                 value="#{b.author.fio}" converter="#{authorController}">
+                                                 value="#{b.author}" converter="#{authorController}">
                                     <f:selectItems value="#{authorController.selectItems}"/>
                                 </h:selectOneMenu>
                                 <h:panelGroup rendered="#{bookController.editMode and b.edit}">
                                     <br/><strong>Genre:</strong><h:selectOneMenu
-                                        rendered="#{bookController.editMode and b.edit}" value="#{b.genre.name}"
+                                        rendered="#{bookController.editMode and b.edit}" value="#{b.genre}"
                                         converter="#{genreController}">
                                     <f:selectItems value="#{genreController.selectItems}"/>
                                 </h:selectOneMenu>

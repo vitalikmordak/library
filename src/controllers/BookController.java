@@ -3,7 +3,9 @@ package controllers;
 import beans.Paginator;
 import db.Database;
 import entities.Book;
+import entities.HibernateUtil;
 import enums.SearchType;
+import org.hibernate.Session;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -70,7 +72,15 @@ public class BookController implements Serializable {
 
     // Update book data
     public void updateBook() {
-        //TODO: realization in method
+        try {
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            paginator.getList().forEach(book -> {
+                if (book.isEdit())
+                    session.update(book);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         cancel();
     }
 
@@ -81,8 +91,8 @@ public class BookController implements Serializable {
 
     public void cancel() {
         switchEditMode();
-        // clear checkboxes
 
+        // clear checkboxes
         paginator.getList().forEach(book -> book.setEdit(false));
     }
 

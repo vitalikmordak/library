@@ -1,10 +1,7 @@
 package db;
 
 import beans.Paginator;
-import entities.Author;
-import entities.Book;
-import entities.Genre;
-import entities.HibernateUtil;
+import entities.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -50,6 +47,13 @@ public class Database {
         return getSession().createQuery(criteriaQuery).getResultList();
     }
 
+    public List<Publisher> getAllPublishers() {
+        CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
+        CriteriaQuery<Publisher> criteriaQuery = criteriaBuilder.createQuery(Publisher.class);
+        criteriaQuery.from(Publisher.class);
+        return getSession().createQuery(criteriaQuery).getResultList();
+    }
+
     public List<Genre> getAllGenres() {
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Genre> criteriaQuery = criteriaBuilder.createQuery(Genre.class);
@@ -63,7 +67,7 @@ public class Database {
         CriteriaBuilder criteriaBuilder = getSession().getCriteriaBuilder();
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<Book> book = criteriaQuery.from(Book.class);
-        criteriaQuery.select(book).where(criteriaBuilder.equal(book.get("genreId"), genreId));
+        criteriaQuery.select(book).where(criteriaBuilder.equal(book.get("genre").get("id"), genreId));
         criteriaQuery.orderBy(criteriaBuilder.asc(book.get("name")));
         currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
         criteria = criteriaQuery;

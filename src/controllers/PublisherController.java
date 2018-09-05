@@ -1,7 +1,7 @@
 package controllers;
 
 import db.Database;
-import entities.Author;
+import entities.Publisher;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -17,15 +17,15 @@ import java.util.Map;
 
 @Named
 @SessionScoped
-public class AuthorController implements Serializable, Converter {
+public class PublisherController implements Serializable, Converter {
     private List<SelectItem> selectItems = new ArrayList<>();
-    private Map<Long, Author> authorMap;
+    private Map<Long, Publisher> publisherMap;
 
-    public AuthorController() {
-        authorMap = new HashMap<>();
-        Database.getInstance().getAllAuthors().forEach(author -> {
-            authorMap.put(author.getId(), author);
-            selectItems.add(new SelectItem(author, author.getFio()));
+    public PublisherController() {
+        publisherMap = new HashMap<>();
+        Database.getInstance().getAllPublishers().forEach(publisher -> {
+            publisherMap.put(publisher.getId(), publisher);
+            selectItems.add(new SelectItem(publisher, publisher.getName()));
         });
     }
 
@@ -35,11 +35,11 @@ public class AuthorController implements Serializable, Converter {
 
     @Override
     public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String s) {
-        return authorMap.get(Long.valueOf(s));
+        return publisherMap.get(Long.valueOf(s));
     }
 
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
-        return ((Author) o).getId().toString();
+        return ((Publisher) o).getId().toString();
     }
 }
