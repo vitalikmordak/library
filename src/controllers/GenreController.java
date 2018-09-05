@@ -10,10 +10,8 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Named
 @ApplicationScoped
@@ -24,7 +22,8 @@ public class GenreController implements Serializable, Converter {
 
     public GenreController() {
         genreMap = new HashMap<>();
-        genreList = Database.getInstance().getAllGenres();
+        // sort list
+        genreList = Database.getInstance().getAllGenres().stream().sorted(Comparator.comparing(Genre::getName)).collect(Collectors.toList());
         genreList.forEach(genre -> {
             genreMap.put(genre.getId(), genre);
             selectItems.add(new SelectItem(genre, genre.getName()));

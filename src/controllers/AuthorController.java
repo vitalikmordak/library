@@ -10,23 +10,25 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Named
 @SessionScoped
 public class AuthorController implements Serializable, Converter {
     private List<SelectItem> selectItems = new ArrayList<>();
     private Map<Long, Author> authorMap;
+    private List<Author> authors;
 
     public AuthorController() {
         authorMap = new HashMap<>();
-        Database.getInstance().getAllAuthors().forEach(author -> {
+        //sort list
+        authors = Database.getInstance().getAllAuthors().stream().sorted(Comparator.comparing(Author::getFio)).collect(Collectors.toList());
+        authors.forEach(author -> {
             authorMap.put(author.getId(), author);
             selectItems.add(new SelectItem(author, author.getFio()));
         });
+
     }
 
     public List<SelectItem> getSelectItems() {
@@ -41,5 +43,9 @@ public class AuthorController implements Serializable, Converter {
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
         return ((Author) o).getId().toString();
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
     }
 }

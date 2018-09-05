@@ -10,20 +10,21 @@ import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Named
 @SessionScoped
 public class PublisherController implements Serializable, Converter {
     private List<SelectItem> selectItems = new ArrayList<>();
     private Map<Long, Publisher> publisherMap;
+    private List<Publisher> publishers;
 
     public PublisherController() {
         publisherMap = new HashMap<>();
-        Database.getInstance().getAllPublishers().forEach(publisher -> {
+        // sort list
+        publishers = Database.getInstance().getAllPublishers().stream().sorted(Comparator.comparing(Publisher::getName)).collect(Collectors.toList());
+        this.publishers.forEach(publisher -> {
             publisherMap.put(publisher.getId(), publisher);
             selectItems.add(new SelectItem(publisher, publisher.getName()));
         });
@@ -41,5 +42,9 @@ public class PublisherController implements Serializable, Converter {
     @Override
     public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object o) {
         return ((Publisher) o).getId().toString();
+    }
+
+    public List<Publisher> getPublishers() {
+        return publishers;
     }
 }
