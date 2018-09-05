@@ -15,7 +15,7 @@ public class Database {
     private SessionFactory sessionFactory;
     private static Database database;
     private Paginator currentPaginator = new Paginator();
-    private CriteriaQuery criteria;
+    private CriteriaQuery<Book> criteria;
 
     private Database() {
         sessionFactory = HibernateUtil.getSessionFactory();
@@ -35,8 +35,8 @@ public class Database {
         CriteriaQuery<Book> criteriaQuery = criteriaBuilder.createQuery(Book.class);
         Root<Book> book = criteriaQuery.from(Book.class);
         criteriaQuery.select(book).orderBy(criteriaBuilder.asc(book.get("name")));
-        currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
         criteria = criteriaQuery;
+        countBooks();
         runCriteria();
     }
 
@@ -69,8 +69,8 @@ public class Database {
         Root<Book> book = criteriaQuery.from(Book.class);
         criteriaQuery.select(book).where(criteriaBuilder.equal(book.get("genre").get("id"), genreId));
         criteriaQuery.orderBy(criteriaBuilder.asc(book.get("name")));
-        currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
         criteria = criteriaQuery;
+        countBooks();
         runCriteria();
     }
 
@@ -106,8 +106,8 @@ public class Database {
             criteriaQuery.where(criteriaBuilder.like(root.get(field), condition));
         }
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get("name")));
-        currentPaginator.setCountAllBooks(getSession().createQuery(criteriaQuery).stream().count());
         criteria = criteriaQuery;
+        countBooks();
         runCriteria();
     }
 
@@ -120,6 +120,11 @@ public class Database {
                 .setMaxResults(currentPaginator.getBooksOnPage()).getResultList();
 
         currentPaginator.setList(list);
+    }
+
+    //method for count elements in list
+    public void countBooks() {
+        currentPaginator.setCountAllBooks(getSession().createQuery(criteria).stream().count());
     }
 
     public byte[] getContent(Long id) {

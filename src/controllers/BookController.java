@@ -82,6 +82,8 @@ public class BookController implements Serializable {
             e.printStackTrace();
         }
         cancel();
+        Database.getInstance().runCriteria(); // update book list after change, e.g. genre
+        Database.getInstance().countBooks(); // update countAllBooks after change
     }
 
     // Change editMode
