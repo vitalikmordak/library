@@ -19,7 +19,7 @@
             <div class="book_list">
                 <h:form id="books">
                     <h:panelGroup id="admin_tools" style="display: block;"
-                                  rendered="#{userLogin.access}"><!--Admin tools start-->
+                                  rendered="#{userLogin.access and bookController.paginator.countAllBooks>0}"><!--Admin tools start-->
                         <f:ajax onevent="loading" execute="@form" render="@form pagesForm countAllBooks">
                             <h:commandLink rendered="#{!bookController.editMode}">
                                 <h:outputText value="#{msg.add_book} "/>
