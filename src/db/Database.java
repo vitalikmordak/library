@@ -115,9 +115,9 @@ public class Database {
     @SuppressWarnings("unchecked")
     public void runCriteria() {
         Query<Book> query1 = getSession().createQuery(criteria);
-
-        List<Book> list = query1.setFirstResult(currentPaginator.getFirstResult())
-                .setMaxResults(currentPaginator.getBooksOnPage()).getResultList();
+        List<Book> list = query1.getResultList();
+//        List<Book> list = query1.setFirstResult(currentPaginator.getFirstResult())
+//                .setMaxResults(currentPaginator.getBooksOnPage()).getResultList();
 
         currentPaginator.setList(list);
     }
