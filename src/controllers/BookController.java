@@ -6,12 +6,15 @@ import entities.Book;
 import entities.HibernateUtil;
 import enums.SearchType;
 import org.hibernate.Session;
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 @Named
@@ -24,8 +27,40 @@ public class BookController implements Serializable {
     private boolean editMode; // to ON|OFF edit mode
     private Paginator<Book> paginator = new Paginator<>();
 
+    private LazyDataModel model;
+
     public BookController() {
         getAllBooks();
+        model = new LazyDataModel() {
+            @Override
+            public List load(int first, int pageSize, String sortField, SortOrder sortOrder, Map filters) {
+                paginator.setFirstResult(first);
+                paginator.setBooksOnPage(pageSize);
+                Database.getInstance().runCriteria();
+                Database.getInstance().countBooks();
+                this.setRowCount(paginator.getCountAllBooks());
+                return paginator.getList();
+            }
+
+            @Override
+            public Object getRowData(String rowKey) {
+                for (Book book : paginator.getList()) {
+                    if (book.getId().intValue() == Long.valueOf(rowKey).intValue())
+                        return book;
+                }
+                return null;
+            }
+
+            @Override
+            public Object getRowKey(Object book) {
+                return ((Book) book).getId();
+            }
+        };
+        model.setRowCount(paginator.getCountAllBooks());
+    }
+
+    public LazyDataModel getModel() {
+        return model;
     }
 
     public void getAllBooks() {

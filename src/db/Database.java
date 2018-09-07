@@ -115,16 +115,16 @@ public class Database {
     @SuppressWarnings("unchecked")
     public void runCriteria() {
         Query<Book> query1 = getSession().createQuery(criteria);
-        List<Book> list = query1.getResultList();
-//        List<Book> list = query1.setFirstResult(currentPaginator.getFirstResult())
-//                .setMaxResults(currentPaginator.getBooksOnPage()).getResultList();
+//        List<Book> list = query1.getResultList();
+        List<Book> list = query1.setFirstResult(currentPaginator.getFirstResult())
+                .setMaxResults(currentPaginator.getBooksOnPage()).getResultList();
 
         currentPaginator.setList(list);
     }
 
     //method for count elements in list
     public void countBooks() {
-        currentPaginator.setCountAllBooks(getSession().createQuery(criteria).stream().count());
+        currentPaginator.setCountAllBooks((int) getSession().createQuery(criteria).stream().count());
     }
 
     public byte[] getContent(Long id) {

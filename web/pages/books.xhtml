@@ -39,9 +39,9 @@
                             </h:commandButton>
                         </f:ajax>
                     </h:panelGroup><!--Admin tools end-->
-                    <p:dataGrid var="b" value="#{bookController.paginator.list}" paginator="true" columns="3" rows="3"
+                    <p:dataGrid var="b" value="#{bookController.model}" paginator="true" columns="3" rows="3"
                                 paginatorTemplate="{PageLinks} {currentPage}" paginatorAlwaysVisible="false"
-                                emptyMessage="">
+                                emptyMessage="" lazy="true">
                         <p:column>
                             <p:panel header="#{b.name}">
                                 <h:panelGrid columns="1" styleClass="book_details">

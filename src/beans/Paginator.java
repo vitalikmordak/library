@@ -9,9 +9,10 @@ import java.util.List;
 public class Paginator<T> {
     private int selectedPageNumber = 1; // selected page number
     private int booksOnPage = 3; // number of books displayed on the page
-    private long countAllBooks = 0; // number of all books
+    private int countAllBooks = 0; // number of all books
     private List<Integer> pageNumber = new ArrayList<>(); // number of pages for pagination
     private List<T> list; //Book list
+    private int firstResult;
 
     public List<Integer> getPageNumber() {
         int pageCount;
@@ -27,7 +28,16 @@ public class Paginator<T> {
     }
 
     public int getFirstResult() {
-        return selectedPageNumber * booksOnPage - booksOnPage;
+        return firstResult;
+//        return selectedPageNumber * booksOnPage - booksOnPage;
+    }
+
+    public void setBooksOnPage(int booksOnPage) {
+        this.booksOnPage = booksOnPage;
+    }
+
+    public void setFirstResult(int firstResult) {
+        this.firstResult = firstResult;
     }
 
     public int getSelectedPageNumber() {
@@ -42,11 +52,11 @@ public class Paginator<T> {
         return booksOnPage;
     }
 
-    public long getCountAllBooks() {
+    public int getCountAllBooks() {
         return countAllBooks;
     }
 
-    public void setCountAllBooks(long countAllBooks) {
+    public void setCountAllBooks(int countAllBooks) {
         this.countAllBooks = countAllBooks;
     }
 
