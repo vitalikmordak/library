@@ -1,18 +1,26 @@
 package beans;
 
+import entities.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /*
  * Class for pagination
  */
-public class Paginator<T> {
+public class Paginator {
     private int selectedPageNumber = 1; // selected page number
     private int booksOnPage = 3; // number of books displayed on the page
     private int countAllBooks = 0; // number of all books
     private List<Integer> pageNumber = new ArrayList<>(); // number of pages for pagination
-    private List<T> list; //Book list
+    private List<Book> list; //Book list
     private int firstResult;
+    private static Paginator paginator;
+
+    public static Paginator getInstance() {
+        return paginator == null ? paginator = new Paginator() : paginator;
+    }
+
 
     public List<Integer> getPageNumber() {
         int pageCount;
@@ -60,11 +68,11 @@ public class Paginator<T> {
         this.countAllBooks = countAllBooks;
     }
 
-    public List<T> getList() {
+    public List<Book> getList() {
         return list;
     }
 
-    public void setList(List<T> list) {
+    public void setList(List<Book> list) {
         this.list = list;
     }
 }

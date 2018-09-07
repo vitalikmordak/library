@@ -14,7 +14,7 @@ import java.util.List;
 public class Database {
     private SessionFactory sessionFactory;
     private static Database database;
-    private Paginator currentPaginator = new Paginator();
+    private Paginator currentPaginator = Paginator.getInstance();
     private CriteriaQuery<Book> criteria;
 
     private Database() {

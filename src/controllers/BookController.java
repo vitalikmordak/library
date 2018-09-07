@@ -2,19 +2,17 @@ package controllers;
 
 import beans.Paginator;
 import db.Database;
-import entities.Book;
 import entities.HibernateUtil;
 import enums.SearchType;
+import models.BookListLazyModel;
 import org.hibernate.Session;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.model.SortOrder;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 @Named
@@ -25,38 +23,13 @@ public class BookController implements Serializable {
     private char selectedLetter; // selected letter
     private boolean selectedAllBooks = false; // Is "All books" selected?
     private boolean editMode; // to ON|OFF edit mode
-    private Paginator<Book> paginator = new Paginator<>();
+    private Paginator paginator = Paginator.getInstance();
 
     private LazyDataModel model;
 
     public BookController() {
         getAllBooks();
-        model = new LazyDataModel() {
-            @Override
-            public List load(int first, int pageSize, String sortField, SortOrder sortOrder, Map filters) {
-                paginator.setFirstResult(first);
-                paginator.setBooksOnPage(pageSize);
-                Database.getInstance().runCriteria();
-                Database.getInstance().countBooks();
-                this.setRowCount(paginator.getCountAllBooks());
-                return paginator.getList();
-            }
-
-            @Override
-            public Object getRowData(String rowKey) {
-                for (Book book : paginator.getList()) {
-                    if (book.getId().intValue() == Long.valueOf(rowKey).intValue())
-                        return book;
-                }
-                return null;
-            }
-
-            @Override
-            public Object getRowKey(Object book) {
-                return ((Book) book).getId();
-            }
-        };
-        model.setRowCount(paginator.getCountAllBooks());
+        model = new BookListLazyModel();
     }
 
     public LazyDataModel getModel() {
@@ -172,7 +145,7 @@ public class BookController implements Serializable {
         this.selectedLetter = selectedLetter;
     }
 
-    public Paginator<Book> getPaginator() {
+    public Paginator getPaginator() {
         return paginator;
     }
 
