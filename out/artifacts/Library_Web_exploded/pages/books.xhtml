@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xml:lang="en" lang="en"
+>
+<h:head>
+    <title>#{msg.index_title}</title>
+    <h:outputStylesheet library="css" name="style_main_page.css"/>
+</h:head>
+<h:body>
+
+    <ui:composition template="/templates/library.xhtml">
+        <ui:define name="content">
+            <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper"
+                            style="display: none; margin: auto;"/>
+            <h:outputText value="#{msg.found_books} #{bookController.paginator.countAllBooks}" id="countAllBooks"/>
+            <div class="book_list">
+                <h:form id="books">
+                    <h:panelGroup id="admin_tools" style="display: block;"
+                                  rendered="#{userLogin.access and bookController.paginator.countAllBooks>0}"><!--Admin tools start-->
+                        <f:ajax onevent="loading" execute="@form" render="@form pagesForm countAllBooks">
+                            <h:commandLink rendered="#{!bookController.editMode}">
+                                <h:outputText value="#{msg.add_book} "/>
+                            </h:commandLink>
+
+                            <h:commandLink action="#{bookController.switchEditMode}"
+                                           rendered="#{!bookController.editMode}">
+                                <h:outputText value=" #{msg.edit_book}"/>
+                            </h:commandLink>
+                            <h:commandButton action="#{bookController.updateBook}" rendered="#{bookController.editMode}"
+                                             value="#{msg.save_changes}">
+                            </h:commandButton>
+                            <h:commandButton immediate="true" action="#{bookController.cancel}"
+                                             rendered="#{bookController.editMode}" value="#{msg.cancel_changes}">
+                            </h:commandButton>
+                        </f:ajax>
+                    </h:panelGroup><!--Admin tools end-->
+                    <p:dataGrid var="b" value="#{bookController.model}" paginator="true" columns="3" rows="3"
+                                paginatorTemplate="{PageLinks} {currentPage}" paginatorAlwaysVisible="false"
+                                emptyMessage="" lazy="true">
+                        <p:column>
+                            <p:panel header="#{b.name}">
+                                <h:panelGrid columns="1" styleClass="book_details">
+                                    <h:graphicImage value="/ShowImage?id=#{b.id}"/>
+                                    <p:row>
+                                        <strong>ISBN: </strong><h:outputText value="#{b.isbn}"
+                                                                             rendered="#{!b.edit}"/>
+
+                                        <h:inputText value="#{b.isbn}" rendered="#{bookController.editMode and b.edit}"
+                                                     style=" width: 120px;"/>
+                                    </p:row>
+                                    <p:row>
+                                        <strong>Publisher: </strong><h:outputText value="#{b.publisher.name}"
+                                                                                  rendered="#{!b.edit}"/>
+                                        <h:selectOneMenu rendered="#{bookController.editMode and b.edit}"
+                                                         value="#{b.publisher}"
+                                                         converter="#{publisherController}">
+                                            <f:selectItems value="#{publisherController.selectItems}"/>
+                                        </h:selectOneMenu>
+                                    </p:row>
+                                    <p:row>
+                                        <strong>Number of pages: </strong> <h:outputText value="#{b.pageCount}"
+                                                                                         rendered="#{!b.edit}"/>
+                                        <h:inputText value="#{b.pageCount}"
+                                                     rendered="#{bookController.editMode and b.edit}"
+                                                     style=" width: 120px;"/>
+                                    </p:row>
+                                    <p:row>
+                                        <strong>The year of publishing: </strong> <h:outputText value="#{b.publishDate}"
+                                                                                                rendered="#{!b.edit}"/>
+                                        <h:inputText value="#{b.publishDate}"
+                                                     rendered="#{bookController.editMode and b.edit}"
+                                                     style=" width: 120px;"/>
+                                    </p:row>
+                                    <p:row>
+                                        <strong>Author: </strong> <h:outputText value="#{b.author.fio}"
+                                                                                rendered="#{!b.edit}"/>
+                                        <h:selectOneMenu rendered="#{bookController.editMode and b.edit}"
+                                                         value="#{b.author}" converter="#{authorController}">
+                                            <f:selectItems value="#{authorController.selectItems}"/>
+                                        </h:selectOneMenu>
+                                    </p:row>
+                                    <h:panelGroup rendered="#{bookController.editMode and b.edit}">
+
+                                        <strong>Genre: </strong><h:selectOneMenu
+                                            rendered="#{bookController.editMode and b.edit}" value="#{b.genre}"
+                                            converter="#{genreController}">
+                                        <f:selectItems value="#{genreController.selectItems}"/>
+                                    </h:selectOneMenu>
+                                    </h:panelGroup>
+                                    <p style="text-align: center; margin-top: 10px;"><h:outputLink
+                                            value="#{request.contextPath}/PdfContent?id=#{b.id}"
+                                            target="_blank"
+                                            rendered="#{!bookController.editMode}">#{msg.download_pdf}</h:outputLink>
+                                    </p>
+                                    <p style="text-align: center;"><h:selectBooleanCheckbox value="#{b.edit}"
+                                                                                            rendered="#{!bookController.editMode and userLogin.access}"/>
+                                    </p>
+                                </h:panelGrid>
+                            </p:panel>
+                        </p:column>
+                    </p:dataGrid>
+                </h:form>
+            </div>
+            <div class="pages">
+                <h:panelGroup id="pagesForm">
+                    <h:form rendered="#{false}">
+                        #{msg.pages}
+                        <ui:repeat id="pagesList" value="#{bookController.paginator.pageNumber}" var="p">
+                            <h:commandLink value="#{p} "
+                                           styleClass="#{p == bookController.paginator.selectedPageNumber ? 'selected_item':''}">
+                                <f:param name="page_number" value="#{p}"/>
+                                <f:ajax onevent="loading" event="action"
+                                        render="pagesForm books countAllBooks :lettersForm :genresList :searchForm"
+                                        listener="#{bookController.selectPage}"/>
+                            </h:commandLink>
+                        </ui:repeat>
+                    </h:form>
+                </h:panelGroup>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
