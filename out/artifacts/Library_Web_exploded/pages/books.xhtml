@@ -12,7 +12,6 @@
     <h:outputStylesheet library="css" name="style_main_page.css"/>
 </h:head>
 <h:body>
-
     <ui:composition template="/templates/library.xhtml">
         <ui:define name="content">
             <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper"
@@ -20,25 +19,6 @@
             <h:outputText value="#{msg.found_books} #{bookController.paginator.countAllBooks}" id="countAllBooks"/>
             <div class="book_list">
                 <h:form id="books">
-                    <h:panelGroup id="admin_tools" style="display: block;"
-                                  rendered="#{userLogin.access and bookController.paginator.countAllBooks>0}"><!--Admin tools start-->
-                        <f:ajax onevent="loading" execute="@form" render="@form pagesForm countAllBooks">
-                            <h:commandLink rendered="#{!bookController.editMode}">
-                                <h:outputText value="#{msg.add_book} "/>
-                            </h:commandLink>
-
-                            <h:commandLink action="#{bookController.switchEditMode}"
-                                           rendered="#{!bookController.editMode}">
-                                <h:outputText value=" #{msg.edit_book}"/>
-                            </h:commandLink>
-                            <h:commandButton action="#{bookController.updateBook}" rendered="#{bookController.editMode}"
-                                             value="#{msg.save_changes}">
-                            </h:commandButton>
-                            <h:commandButton immediate="true" action="#{bookController.cancel}"
-                                             rendered="#{bookController.editMode}" value="#{msg.cancel_changes}">
-                            </h:commandButton>
-                        </f:ajax>
-                    </h:panelGroup><!--Admin tools end-->
                     <p:dataGrid var="b" value="#{bookController.model}" paginator="true" columns="3" rows="3"
                                 paginatorTemplate="{PageLinks} {currentPage}" paginatorAlwaysVisible="false"
                                 emptyMessage="" lazy="true">
@@ -47,80 +27,35 @@
                                 <h:panelGrid columns="1" styleClass="book_details">
                                     <h:graphicImage value="/ShowImage?id=#{b.id}"/>
                                     <p:row>
-                                        <strong>ISBN: </strong><h:outputText value="#{b.isbn}"
-                                                                             rendered="#{!b.edit}"/>
-
-                                        <h:inputText value="#{b.isbn}" rendered="#{bookController.editMode and b.edit}"
-                                                     style=" width: 120px;"/>
+                                        <strong>ISBN: </strong><h:outputText value="#{b.isbn}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>Publisher: </strong><h:outputText value="#{b.publisher.name}"
-                                                                                  rendered="#{!b.edit}"/>
-                                        <h:selectOneMenu rendered="#{bookController.editMode and b.edit}"
-                                                         value="#{b.publisher}"
-                                                         converter="#{publisherController}">
-                                            <f:selectItems value="#{publisherController.selectItems}"/>
-                                        </h:selectOneMenu>
+                                        <strong>Publisher: </strong><h:outputText value="#{b.publisher.name}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>Number of pages: </strong> <h:outputText value="#{b.pageCount}"
-                                                                                         rendered="#{!b.edit}"/>
-                                        <h:inputText value="#{b.pageCount}"
-                                                     rendered="#{bookController.editMode and b.edit}"
-                                                     style=" width: 120px;"/>
+                                        <strong>Number of pages: </strong> <h:outputText value="#{b.pageCount}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>The year of publishing: </strong> <h:outputText value="#{b.publishDate}"
-                                                                                                rendered="#{!b.edit}"/>
-                                        <h:inputText value="#{b.publishDate}"
-                                                     rendered="#{bookController.editMode and b.edit}"
-                                                     style=" width: 120px;"/>
+                                        <strong>The year of publishing: </strong> <h:outputText value="#{b.publishDate}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>Author: </strong> <h:outputText value="#{b.author.fio}"
-                                                                                rendered="#{!b.edit}"/>
-                                        <h:selectOneMenu rendered="#{bookController.editMode and b.edit}"
-                                                         value="#{b.author}" converter="#{authorController}">
-                                            <f:selectItems value="#{authorController.selectItems}"/>
-                                        </h:selectOneMenu>
+                                        <strong>Author: </strong> <h:outputText value="#{b.author.fio}"/>
                                     </p:row>
-                                    <h:panelGroup rendered="#{bookController.editMode and b.edit}">
-
-                                        <strong>Genre: </strong><h:selectOneMenu
-                                            rendered="#{bookController.editMode and b.edit}" value="#{b.genre}"
-                                            converter="#{genreController}">
-                                        <f:selectItems value="#{genreController.selectItems}"/>
-                                    </h:selectOneMenu>
-                                    </h:panelGroup>
                                     <p style="text-align: center; margin-top: 10px;"><h:outputLink
                                             value="#{request.contextPath}/PdfContent?id=#{b.id}"
-                                            target="_blank"
-                                            rendered="#{!bookController.editMode}">#{msg.download_pdf}</h:outputLink>
+                                            target="_blank">#{msg.download_pdf}</h:outputLink>
                                     </p>
-                                    <p style="text-align: center;"><h:selectBooleanCheckbox value="#{b.edit}"
-                                                                                            rendered="#{!bookController.editMode and userLogin.access}"/>
-                                    </p>
+                                    <p:commandButton value="Edit" icon="ui-icon-pencil"
+                                                     actionListener="#{atView.editBook}">
+                                        <f:setPropertyActionListener value="#{b}"
+                                                                     target="#{bookController.selectedBook}"/>
+                                        <p:ajax event="dialogReturn" update="@form countAllBooks"/>
+                                    </p:commandButton>
                                 </h:panelGrid>
                             </p:panel>
                         </p:column>
                     </p:dataGrid>
                 </h:form>
-            </div>
-            <div class="pages">
-                <h:panelGroup id="pagesForm">
-                    <h:form rendered="#{false}">
-                        #{msg.pages}
-                        <ui:repeat id="pagesList" value="#{bookController.paginator.pageNumber}" var="p">
-                            <h:commandLink value="#{p} "
-                                           styleClass="#{p == bookController.paginator.selectedPageNumber ? 'selected_item':''}">
-                                <f:param name="page_number" value="#{p}"/>
-                                <f:ajax onevent="loading" event="action"
-                                        render="pagesForm books countAllBooks :lettersForm :genresList :searchForm"
-                                        listener="#{bookController.selectPage}"/>
-                            </h:commandLink>
-                        </ui:repeat>
-                    </h:form>
-                </h:panelGroup>
             </div>
         </ui:define>
     </ui:composition>

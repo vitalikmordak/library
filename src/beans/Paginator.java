@@ -37,7 +37,6 @@ public class Paginator {
 
     public int getFirstResult() {
         return firstResult;
-//        return selectedPageNumber * booksOnPage - booksOnPage;
     }
 
     public void setBooksOnPage(int booksOnPage) {

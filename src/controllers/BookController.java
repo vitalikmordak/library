@@ -2,10 +2,12 @@ package controllers;
 
 import beans.Paginator;
 import db.Database;
+import entities.Book;
 import entities.HibernateUtil;
 import enums.SearchType;
 import models.BookListLazyModel;
 import org.hibernate.Session;
+import org.primefaces.PrimeFaces;
 import org.primefaces.model.LazyDataModel;
 
 import javax.enterprise.context.SessionScoped;
@@ -22,8 +24,8 @@ public class BookController implements Serializable {
     private long selectedGenreId; // selected genre
     private char selectedLetter; // selected letter
     private boolean selectedAllBooks = false; // Is "All books" selected?
-    private boolean editMode; // to ON|OFF edit mode
     private Paginator paginator = Paginator.getInstance();
+    private Book selectedBook; // selected book in edit mode
 
     private LazyDataModel model;
 
@@ -72,42 +74,21 @@ public class BookController implements Serializable {
         }
     }
 
-    public void selectPage() {
-        Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-        paginator.setSelectedPageNumber(Integer.valueOf(params.get("page_number")));
-        Database.getInstance().runCriteria();
-    }
-
     // Update book data
     public void updateBook() {
         try {
             Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-            paginator.getList().forEach(book -> {
-                if (book.isEdit())
-                    session.update(book);
-            });
+            session.update(selectedBook);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cancel();
         Database.getInstance().runCriteria(); // update book list after change, e.g. genre
         Database.getInstance().countBooks(); // update countAllBooks after change
-    }
-
-    // Change editMode
-    public void switchEditMode() {
-        editMode = !editMode;
+        cancel();
     }
 
     public void cancel() {
-        switchEditMode();
-
-        // clear checkboxes
-        paginator.getList().forEach(book -> book.setEdit(false));
-    }
-
-    public boolean getEditMode() {
-        return editMode;
+        PrimeFaces.current().dialog().closeDynamic(selectedBook); // Close dialog
     }
 
     // Set default values
@@ -155,5 +136,13 @@ public class BookController implements Serializable {
 
     public void setSelectedAllBooks(boolean selectedAllBooks) {
         this.selectedAllBooks = selectedAllBooks;
+    }
+
+    public Book getSelectedBook() {
+        return selectedBook;
+    }
+
+    public void setSelectedBook(Book selectedBook) {
+        this.selectedBook = selectedBook;
     }
 }

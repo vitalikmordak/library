@@ -16,8 +16,6 @@ public class Book {
     private Genre genre;
     private Author author;
     private Publisher publisher;
-    private boolean edit;
-
 
     @Id
     @Column(name = "id")
@@ -139,14 +137,5 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
-    }
-
-    @Transient
-    public boolean isEdit() {
-        return edit;
-    }
-
-    public void setEdit(boolean edit) {
-        this.edit = edit;
     }
 }
