@@ -45,8 +45,8 @@
                                             value="#{request.contextPath}/PdfContent?id=#{b.id}"
                                             target="_blank">#{msg.download_pdf}</h:outputLink>
                                     </p>
-                                    <p:commandButton value="Edit" icon="ui-icon-pencil"
-                                                     actionListener="#{atView.editBook}">
+                                    <p:commandButton icon="ui-icon-pencil"
+                                                     actionListener="#{atView.editBook}" rendered="#{userLogin.access}">
                                         <f:setPropertyActionListener value="#{b}"
                                                                      target="#{bookController.selectedBook}"/>
                                         <p:ajax event="dialogReturn" update="@form countAllBooks"/>

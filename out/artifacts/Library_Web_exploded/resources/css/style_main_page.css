@@ -222,3 +222,36 @@ a:hover, a:active, a:focus {
 .ui-widget {
     font-family: Roboto,sans-serif;
 }
+/*Edit Mode*/
+.edit_mode, .ui-dialog .ui-dialog-content.ui-df-content {
+    background: white;
+    max-width: 450px;
+    max-height: 310px;
+}
+.ui-panelgrid {
+    margin: auto;
+    border: hidden;
+}
+.edit_mode .ui-panelgrid .ui-panelgrid-cell {
+    border-bottom: hidden;
+}
+.ui-widget .ui-button {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #4CAF50;
+    border: 0;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    /*cursor: pointer;*/
+    text-shadow: none;
+}
+.ui-widget .ui-button:hover{
+    background: #43A047;
+    cursor: pointer;
+    box-shadow: none;
+}
+/*Change icon color from black to white*/
+.ui-state-default .ui-icon, .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
+    background-image: url(/javax.faces.resource/images/ui-icons_ffffff_256x240.png.xhtml?ln=primefaces-aristo);
+}
