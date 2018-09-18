@@ -11,17 +11,17 @@
     <h:form styleClass="edit_mode">
         <p:panelGrid id="book_details" columns="2">
             Name:
-            <p:inputText value="#{bookController.selectedBook.name}" />
+            <p:inputText value="#{bookController.selectedBook.name}"/>
             ISBN:
-            <p:inputText value="#{bookController.selectedBook.isbn}" />
+            <p:inputText value="#{bookController.selectedBook.isbn}"/>
             Publisher:
             <h:selectOneMenu value="#{bookController.selectedBook.publisher}" converter="#{publisherController}">
                 <f:selectItems value="#{publisherController.selectItems}"/>
-        </h:selectOneMenu>
+            </h:selectOneMenu>
             Number of pages:
-            <p:inputText value="#{bookController.selectedBook.pageCount}" />
+            <p:inputText value="#{bookController.selectedBook.pageCount}"/>
             The year of publishing:
-            <p:inputText value="#{bookController.selectedBook.publishDate}" />
+            <p:inputText value="#{bookController.selectedBook.publishDate}"/>
             Author:
             <h:selectOneMenu value="#{bookController.selectedBook.author}" converter="#{authorController}">
                 <f:selectItems value="#{authorController.selectItems}"/>
@@ -30,7 +30,8 @@
             <h:selectOneMenu value="#{bookController.selectedBook.genre}" converter="#{genreController}">
                 <f:selectItems value="#{genreController.selectItems}"/>
             </h:selectOneMenu>
-            <p:commandButton value="#{msg.save_changes}" actionListener="#{bookController.updateBook}" style="float: right;"/>
+            <p:commandButton value="#{msg.save_changes}" actionListener="#{bookController.updateBook}"
+                             style="float: right;"/>
             <p:commandButton value="#{msg.cancel_changes}" actionListener="#{bookController.cancel}"/>
         </p:panelGrid>
     </h:form>

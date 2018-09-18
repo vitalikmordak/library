@@ -145,6 +145,7 @@ a:hover, a:active, a:focus {
     margin-right: auto;
     height: 220px;
 }
+
 .book_details img {
     width: 150px;
     display: block;
@@ -194,11 +195,13 @@ a:hover, a:active, a:focus {
     color: #43A047;
     font-weight: 600;
 }
+
 /*Change PrimeFaces CSS*/
 .ui-paginator, .ui-widget-content, .ui-paginator .ui-paginator-page {
     border: none;
     background: none;
 }
+
 .ui-panel-titlebar {
     padding: 0;
     border: none;
@@ -206,12 +209,14 @@ a:hover, a:active, a:focus {
     text-align: center;
     font-size: 16px;
 }
+
 .ui-paginator-pages {
     padding: 0 3px;
     border: none;
     background: none;
     font-size: 15px;
 }
+
 .ui-widget-header .ui-state-active {
     text-decoration: none;
     color: #43A047;
@@ -219,22 +224,27 @@ a:hover, a:active, a:focus {
     background: none;
     border: none;
 }
+
 .ui-widget {
-    font-family: Roboto,sans-serif;
+    font-family: Roboto, sans-serif;
 }
+
 /*Edit Mode*/
-.edit_mode, .ui-dialog .ui-dialog-content.ui-df-content {
+.edit_mode, .ui-dialog .ui-dialog-content.ui-df-content, .ui-dialog .ui-dialog-titlebar {
     background: white;
     max-width: 450px;
     max-height: 310px;
 }
+
 .ui-panelgrid {
     margin: auto;
     border: hidden;
 }
+
 .edit_mode .ui-panelgrid .ui-panelgrid-cell {
     border-bottom: hidden;
 }
+
 .ui-widget .ui-button {
     font-family: "Roboto", sans-serif;
     outline: 0;
@@ -246,11 +256,13 @@ a:hover, a:active, a:focus {
     /*cursor: pointer;*/
     text-shadow: none;
 }
-.ui-widget .ui-button:hover{
+
+.ui-widget .ui-button:hover {
     background: #43A047;
     cursor: pointer;
     box-shadow: none;
 }
+
 /*Change icon color from black to white*/
 .ui-state-default .ui-icon, .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
     background-image: url(/javax.faces.resource/images/ui-icons_ffffff_256x240.png.xhtml?ln=primefaces-aristo);
