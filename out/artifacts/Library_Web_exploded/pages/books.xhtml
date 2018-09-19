@@ -25,7 +25,7 @@
                         <p:column>
                             <p:panel header="#{b.name}">
                                 <h:panelGrid columns="1" styleClass="book_details">
-                                    <h:graphicImage value="/ShowImage?id=#{b.id}"/>
+                                    <h:graphicImage value="/ShowImage?id=#{b.id}" id="bookImg"/>
                                     <p:row>
                                         <strong>ISBN: </strong><h:outputText value="#{b.isbn}"/>
                                     </p:row>
@@ -36,7 +36,8 @@
                                         <strong>Number of pages: </strong> <h:outputText value="#{b.pageCount}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>The year of publishing: </strong> <h:outputText value="#{b.publishDate}"/>
+                                        <strong>The year of publishing: </strong> <h:outputText
+                                            value="#{b.publishDate}"/>
                                     </p:row>
                                     <p:row>
                                         <strong>Author: </strong> <h:outputText value="#{b.author.fio}"/>
@@ -49,7 +50,7 @@
                                                      actionListener="#{atView.editBook}" rendered="#{userLogin.access}">
                                         <f:setPropertyActionListener value="#{b}"
                                                                      target="#{bookController.selectedBook}"/>
-                                        <p:ajax event="dialogReturn" update="@form countAllBooks"/>
+                                        <p:ajax event="dialogReturn" update="@form countAllBooks bookImg"/>
                                     </p:commandButton>
                                 </h:panelGrid>
                             </p:panel>

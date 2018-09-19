@@ -232,8 +232,8 @@ a:hover, a:active, a:focus {
 /*Edit Mode*/
 .edit_mode, .ui-dialog .ui-dialog-content.ui-df-content, .ui-dialog .ui-dialog-titlebar {
     background: white;
-    max-width: 450px;
-    max-height: 310px;
+    /*max-width: 450px;*/
+    /*max-height: 310px;*/
 }
 
 .ui-panelgrid {

@@ -9,29 +9,46 @@
 </h:head>
 <h:body style="background: white;">
     <h:form styleClass="edit_mode">
-        <p:panelGrid id="book_details" columns="2">
-            Name:
-            <p:inputText value="#{bookController.selectedBook.name}" />
-            ISBN:
-            <p:inputText value="#{bookController.selectedBook.isbn}" />
-            Publisher:
-            <h:selectOneMenu value="#{bookController.selectedBook.publisher}" converter="#{publisherController}">
-                <f:selectItems value="#{publisherController.selectItems}"/>
-        </h:selectOneMenu>
-            Number of pages:
-            <p:inputText value="#{bookController.selectedBook.pageCount}" />
-            The year of publishing:
-            <p:inputText value="#{bookController.selectedBook.publishDate}" />
-            Author:
-            <h:selectOneMenu value="#{bookController.selectedBook.author}" converter="#{authorController}">
-                <f:selectItems value="#{authorController.selectItems}"/>
-            </h:selectOneMenu>
-            Genre:
-            <h:selectOneMenu value="#{bookController.selectedBook.genre}" converter="#{genreController}">
-                <f:selectItems value="#{genreController.selectItems}"/>
-            </h:selectOneMenu>
-            <p:commandButton value="#{msg.save_changes}" actionListener="#{bookController.updateBook}" style="float: right;"/>
-            <p:commandButton value="#{msg.cancel_changes}" actionListener="#{bookController.cancel}"/>
+        <p:panelGrid columns="2">
+            <p:panel id="imgUploader">
+                <p:graphicImage library="images" value="#{imageController.defaultImg}" width="110" height="150" id="bookImg" cache="false"/>
+                <h:form  enctype="multipart/form-data">
+                    <p:fileUpload value="Load" fileUploadListener="#{imageController.handleFileUpload}"
+                                  update="bookNewImg" sizeLimit="#{imageController.MAX_UPLOAD_SIZE}" auto="true"
+                                  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" multiple="false" />
+                    <p:graphicImage value="#{imageController.uploadedImg}" width="110" height="150"
+                                    id="bookNewImg" cache="false"/>
+
+                </h:form>
+            </p:panel>
+            <p:panel>
+                <p:panelGrid id="book_details" columns="2">
+                    Name:
+                    <p:inputText value="#{bookController.selectedBook.name}"/>
+                    ISBN:
+                    <p:inputText value="#{bookController.selectedBook.isbn}"/>
+                    Publisher:
+                    <h:selectOneMenu value="#{bookController.selectedBook.publisher}"
+                                     converter="#{publisherController}">
+                        <f:selectItems value="#{publisherController.selectItems}"/>
+                    </h:selectOneMenu>
+                    Number of pages:
+                    <p:inputText value="#{bookController.selectedBook.pageCount}"/>
+                    The year of publishing:
+                    <p:inputText value="#{bookController.selectedBook.publishDate}"/>
+                    Author:
+                    <h:selectOneMenu value="#{bookController.selectedBook.author}" converter="#{authorController}">
+                        <f:selectItems value="#{authorController.selectItems}"/>
+                    </h:selectOneMenu>
+                    Genre:
+                    <h:selectOneMenu value="#{bookController.selectedBook.genre}" converter="#{genreController}">
+                        <f:selectItems value="#{genreController.selectItems}"/>
+                    </h:selectOneMenu>
+                    <p:commandButton value="#{msg.save_changes}" action="#{bookController.updateBook}" actionListener="#{imageController.updateImg}"
+                                     style="float: right;"/>
+                    <p:commandButton value="#{msg.cancel_changes}" immediate="true" action="#{bookController.cancel}" actionListener="#{imageController.clearImg}"/>
+                </p:panelGrid>
+            </p:panel>
         </p:panelGrid>
     </h:form>
 </h:body>
