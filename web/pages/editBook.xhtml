@@ -7,7 +7,7 @@
 <h:head>
     <h:outputStylesheet library="css" name="style_main_page.css"/>
 </h:head>
-<h:body style="background: white;">
+<h:body style="background: white; overflow: hidden;">
     <h:form styleClass="edit_mode">
         <p:panelGrid columns="2">
             <p:panel id="imgUploader">
@@ -16,7 +16,7 @@
                     <p:fileUpload fileUploadListener="#{imageController.handleFileUpload}"
                                   update="bookNewImg" sizeLimit="#{imageController.MAX_UPLOAD_SIZE}" auto="true"
                                   allowTypes="/(\.|\/)(gif|jpe?g|png)$/" multiple="false" />
-                    <p:graphicImage value="#{imageController.uploadedImg}" width="110" height="150"
+                    <p:graphicImage value="#{imageController.uploadedImg}" width="110" height="150" style="margin-top: -20px;"
                                     id="bookNewImg" cache="false"/>
 
                 </h:form>

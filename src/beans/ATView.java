@@ -15,6 +15,7 @@ public class ATView {
         options.put("resizable", false);
         options.put("draggable", false);
         options.put("modal", true);
+        options.put("closable",false);
         PrimeFaces.current().dialog().openDynamic("/pages/editBook.xhtml", options, null);
     }
 }

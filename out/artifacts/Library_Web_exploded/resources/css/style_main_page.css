@@ -265,3 +265,18 @@ a:hover, a:active, a:focus {
 .ui-state-default .ui-icon, .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
     background-image: url(/javax.faces.resource/images/ui-icons_ffffff_256x240.png.xhtml?ln=primefaces-aristo);
 }
+/*Upload image section*/
+.fileupload-buttonbar, .ui-fileupload .fileinput-button {
+    background: transparent none;
+    border: none;
+}
+.fileupload-content, .ui-dialog .ui-dialog-titlebar {
+    display: none !important;
+}
+.ui-fileupload-buttonbar{
+ padding: 0;
+}
+.ui-widget-header {
+    border: none;
+    background: none;
+}
