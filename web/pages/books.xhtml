@@ -24,8 +24,8 @@
                                 emptyMessage="" lazy="true">
                         <p:column>
                             <p:panel header="#{b.name}">
-                                <h:panelGrid columns="1" styleClass="book_details">
-                                    <h:graphicImage value="/ShowImage?id=#{b.id}" id="bookImg"/>
+                                <h:panelGrid columns="1" styleClass="book_details" id="bookDetails">
+                                    <p:graphicImage value="/ShowImage?id=#{b.id}" cache="false"/>
                                     <p:row>
                                         <strong>ISBN: </strong><h:outputText value="#{b.isbn}"/>
                                     </p:row>
@@ -50,7 +50,7 @@
                                                      actionListener="#{atView.editBook}" rendered="#{userLogin.access}">
                                         <f:setPropertyActionListener value="#{b}"
                                                                      target="#{bookController.selectedBook}"/>
-                                        <p:ajax event="dialogReturn" update="@form countAllBooks bookImg"/>
+                                        <p:ajax event="dialogReturn" update="@form countAllBooks bookDetails"/>
                                     </p:commandButton>
                                 </h:panelGrid>
                             </p:panel>
