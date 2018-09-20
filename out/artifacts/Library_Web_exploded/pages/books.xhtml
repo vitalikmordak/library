@@ -17,7 +17,7 @@
             <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper"
                             style="display: none; margin: auto;"/>
             <h:outputText value="#{msg.found_books} #{bookController.paginator.countAllBooks}" id="countAllBooks"/><br/>
-            <p:commandButton value="Add Book" actionListener="#{atView.editBook}" rendered="#{userLogin.access}" id="AddBook"
+            <p:commandButton value="#{msg.add_book}" actionListener="#{atView.editBook}" rendered="#{userLogin.access}" id="AddBook"
                              action="#{bookController.switchAddMode}">
                 <p:ajax event="dialogReturn" update="books countAllBooks"/>
             </p:commandButton>
@@ -31,20 +31,20 @@
                                 <h:panelGrid columns="1" styleClass="book_details" id="bookDetails">
                                     <p:graphicImage value="/ShowImage?id=#{b.id}" cache="false"/>
                                     <p:row>
-                                        <strong>ISBN: </strong><h:outputText value="#{b.isbn}"/>
+                                        <strong>#{msg.isbn}</strong><h:outputText value="#{b.isbn}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>Publisher: </strong><h:outputText value="#{b.publisher.name}"/>
+                                        <strong>#{msg.publisher}</strong><h:outputText value="#{b.publisher.name}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>Number of pages: </strong> <h:outputText value="#{b.pageCount}"/>
+                                        <strong>#{msg.num_of_pages}</strong> <h:outputText value="#{b.pageCount}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>The year of publishing: </strong> <h:outputText
+                                        <strong>#{msg.published_year}</strong> <h:outputText
                                             value="#{b.publishDate}"/>
                                     </p:row>
                                     <p:row>
-                                        <strong>Author: </strong> <h:outputText value="#{b.author.fio}"/>
+                                        <strong>#{msg.author}</strong> <h:outputText value="#{b.author.fio}"/>
                                     </p:row>
                                     <p style="text-align: center; margin-top: 10px;"><h:outputLink
                                             value="#{request.contextPath}/PdfContent?id=#{b.id}"

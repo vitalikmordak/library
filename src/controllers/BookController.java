@@ -11,11 +11,13 @@ import org.primefaces.PrimeFaces;
 import org.primefaces.model.LazyDataModel;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 @Named
 @SessionScoped
@@ -27,6 +29,8 @@ public class BookController implements Serializable {
     private Paginator paginator = Paginator.getInstance();
     private Book selectedBook; // selected book in edit mode
     private boolean addMode;
+    private ResourceBundle bundle = ResourceBundle.getBundle("nls.messages", FacesContext.getCurrentInstance().getViewRoot().getLocale());
+
 
     private LazyDataModel model;
 
@@ -78,10 +82,12 @@ public class BookController implements Serializable {
 
     // Update book data
     public void updateBook() {
+        if (!validateFields()) return;
+
         try {
             Session session = HibernateUtil.getSessionFactory().getCurrentSession();
             if (!addMode)
-            session.update(selectedBook);
+                session.update(selectedBook);
             else session.save(selectedBook);
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,6 +102,7 @@ public class BookController implements Serializable {
     }
 
     // Set default values
+
     private void setDefaultValues(long selectedGenreId, char selectedLetter, boolean selectedAllBooks) {
         paginator.setSelectedPageNumber(1);
         this.selectedGenreId = selectedGenreId;
@@ -103,10 +110,40 @@ public class BookController implements Serializable {
         this.selectedAllBooks = selectedAllBooks;
     }
 
-    public void switchAddMode(){
+    public void switchAddMode() {
         addMode = !addMode;
     }
 
+    // Validate fields while edit or add book
+    private boolean validateFields() {
+        if (checkField(selectedBook.getName()) ||
+                checkField(selectedBook.getIsbn()) ||
+                checkField(selectedBook.getPageCount()) ||
+                checkField(selectedBook.getPublishDate())) {
+            printFailMsg(bundle.getString("empty_fields"));
+            return false;
+        }
+        if (addMode) {
+            if (checkField(selectedBook.getImage())) {
+                printFailMsg(bundle.getString("image_not_uploaded"));
+                return false;
+            }
+            if (checkField(selectedBook.getContent())) {
+                printFailMsg(bundle.getString("content_not_uploaded"));
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean checkField(Object o) {
+        return o == null || o.toString().equals("");
+    }
+
+    private void printFailMsg(String msg) {
+        FacesContext.getCurrentInstance().validationFailed();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, "error"));
+    }
 
     /*
      *   Getters and Setters

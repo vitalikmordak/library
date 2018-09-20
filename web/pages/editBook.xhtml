@@ -9,6 +9,7 @@
 </h:head>
 <h:body style="background: white; overflow: hidden;">
     <h:form styleClass="edit_mode">
+        <p:growl id="error"/>
         <p:panelGrid columns="2">
             <p:panel id="imgUploader">
                 <p:graphicImage value="#{imageController.defaultImg}" width="110" height="150" id="bookImg" cache="false" rendered="#{!bookController.addMode}"/>
@@ -23,34 +24,34 @@
             </p:panel>
             <p:panel>
                 <p:panelGrid id="book_details" columns="2">
-                    Name:
+                    <h:outputText value="#{msg.book_name}"/>
                     <p:inputText value="#{bookController.selectedBook.name}"/>
-                    ISBN:
+                    <h:outputText value="#{msg.isbn}"/>
                     <p:inputText value="#{bookController.selectedBook.isbn}"/>
-                    Publisher:
+                    <h:outputText value="#{msg.publisher}"/>
                     <h:selectOneMenu value="#{bookController.selectedBook.publisher}"
                                      converter="#{publisherController}">
                         <f:selectItems value="#{publisherController.selectItems}"/>
                     </h:selectOneMenu>
-                    Number of pages:
+                    <h:outputText value="#{msg.num_of_pages}"/>
                     <p:inputText value="#{bookController.selectedBook.pageCount}"/>
-                    The year of publishing:
+                    <h:outputText value="#{msg.published_year}"/>
                     <p:inputText value="#{bookController.selectedBook.publishDate}"/>
-                    Author:
+                    <h:outputText value="#{msg.author}"/>
                     <h:selectOneMenu value="#{bookController.selectedBook.author}" converter="#{authorController}">
                         <f:selectItems value="#{authorController.selectItems}"/>
                     </h:selectOneMenu>
-                    Genre:
+                    <h:outputText value="#{msg.genre}"/>
                     <h:selectOneMenu value="#{bookController.selectedBook.genre}" converter="#{genreController}">
                         <f:selectItems value="#{genreController.selectItems}"/>
                     </h:selectOneMenu>
-                    PDF:
+                    <h:outputText value="#{msg.pdf}"/>
                     <h:form  enctype="multipart/form-data">
                         <p:fileUpload fileUploadListener="#{pdfController.handleFileUpload}" auto="true"
                                       allowTypes="/(\.|\/)(pdf)$/" multiple="false" id="uploadPDF" />
                     </h:form>
                     <p:commandButton value="#{msg.save_changes}" action="#{bookController.updateBook}" actionListener="#{imageController.updateImg}"
-                                     style="float: right;"/>
+                                     style="float: right;" update="error"/>
                     <p:commandButton value="#{msg.cancel_changes}" immediate="true" action="#{bookController.cancel}" actionListener="#{imageController.clearImg}"/>
                 </p:panelGrid>
             </p:panel>
