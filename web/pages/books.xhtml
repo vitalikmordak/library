@@ -16,7 +16,11 @@
         <ui:define name="content">
             <h:graphicImage library="images" name="ajax-loader.gif" id="loading_wrapper"
                             style="display: none; margin: auto;"/>
-            <h:outputText value="#{msg.found_books} #{bookController.paginator.countAllBooks}" id="countAllBooks"/>
+            <h:outputText value="#{msg.found_books} #{bookController.paginator.countAllBooks}" id="countAllBooks"/><br/>
+            <p:commandButton value="Add Book" actionListener="#{atView.editBook}" rendered="#{userLogin.access}" id="AddBook"
+                             action="#{bookController.switchAddMode}">
+                <p:ajax event="dialogReturn" update="books countAllBooks"/>
+            </p:commandButton>
             <div class="book_list">
                 <h:form id="books">
                     <p:dataGrid var="b" value="#{bookController.model}" paginator="true" columns="3" rows="3"

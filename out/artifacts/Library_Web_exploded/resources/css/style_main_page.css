@@ -243,7 +243,7 @@ a:hover, a:active, a:focus {
     border-bottom: hidden;
 }
 
-.ui-widget .ui-button {
+.ui-widget .ui-button, #AddBook {
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: #4CAF50;
@@ -255,7 +255,7 @@ a:hover, a:active, a:focus {
     text-shadow: none;
 }
 
-.ui-widget .ui-button:hover {
+.ui-widget .ui-button:hover, #AddBook:hover {
     background: #43A047;
     cursor: pointer;
     box-shadow: none;
@@ -265,18 +265,17 @@ a:hover, a:active, a:focus {
 .ui-state-default .ui-icon, .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
     background-image: url(/javax.faces.resource/images/ui-icons_ffffff_256x240.png.xhtml?ln=primefaces-aristo);
 }
-/*Upload image section*/
-.fileupload-buttonbar, .ui-fileupload .fileinput-button {
-    background: transparent none;
-    border: none;
+
+/*Edit mode upload*/
+@media screen and (max-width: 40em) {
+    .ui-fileupload-content {
+    padding: 0;
+    }
 }
-.fileupload-content, .ui-dialog .ui-dialog-titlebar {
-    display: none !important;
+.ui-fileupload-content, .ui-fileupload-buttonbar {
+    padding: 0;
 }
-.ui-fileupload-buttonbar{
- padding: 0;
-}
-.ui-widget-header {
+.ui-panelgrid-cell .ui-widget-header {
     border: none;
     background: none;
 }

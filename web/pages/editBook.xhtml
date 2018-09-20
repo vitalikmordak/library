@@ -11,7 +11,7 @@
     <h:form styleClass="edit_mode">
         <p:panelGrid columns="2">
             <p:panel id="imgUploader">
-                <p:graphicImage value="#{imageController.defaultImg}" width="110" height="150" id="bookImg" cache="false"/>
+                <p:graphicImage value="#{imageController.defaultImg}" width="110" height="150" id="bookImg" cache="false" rendered="#{!bookController.addMode}"/>
                 <h:form  enctype="multipart/form-data">
                     <p:fileUpload fileUploadListener="#{imageController.handleFileUpload}"
                                   update="bookNewImg" sizeLimit="#{imageController.MAX_UPLOAD_SIZE}" auto="true"
@@ -44,6 +44,11 @@
                     <h:selectOneMenu value="#{bookController.selectedBook.genre}" converter="#{genreController}">
                         <f:selectItems value="#{genreController.selectItems}"/>
                     </h:selectOneMenu>
+                    PDF:
+                    <h:form  enctype="multipart/form-data">
+                        <p:fileUpload fileUploadListener="#{pdfController.handleFileUpload}" auto="true"
+                                      allowTypes="/(\.|\/)(pdf)$/" multiple="false" id="uploadPDF" />
+                    </h:form>
                     <p:commandButton value="#{msg.save_changes}" action="#{bookController.updateBook}" actionListener="#{imageController.updateImg}"
                                      style="float: right;"/>
                     <p:commandButton value="#{msg.cancel_changes}" immediate="true" action="#{bookController.cancel}" actionListener="#{imageController.clearImg}"/>

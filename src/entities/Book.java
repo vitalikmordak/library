@@ -18,6 +18,7 @@ public class Book {
     private Publisher publisher;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long getId() {
         return id;

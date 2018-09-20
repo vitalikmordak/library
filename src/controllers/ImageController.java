@@ -24,7 +24,8 @@ public class ImageController implements Serializable {
 
     @Inject
     private BookController bookController;
-
+    @Inject
+    private PdfController pdfController;
     public StreamedContent getDefaultImg() {
         return getStreamedContent(bookController.getSelectedBook().getImage());
     }
@@ -55,11 +56,16 @@ public class ImageController implements Serializable {
 
     public void clearImg() {
         uploadedImg = null;
+        if (bookController.isAddMode())
+            pdfController.clear();
     }
 
     public void updateImg() {
         if (uploadedImg != null) {
             bookController.getSelectedBook().setImage(uploadedImg);
+        }
+        if (bookController.isAddMode()) {
+            pdfController.updateContent();
         }
         clearImg();
     }

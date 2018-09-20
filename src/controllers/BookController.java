@@ -26,12 +26,14 @@ public class BookController implements Serializable {
     private boolean selectedAllBooks = false; // Is "All books" selected?
     private Paginator paginator = Paginator.getInstance();
     private Book selectedBook; // selected book in edit mode
+    private boolean addMode;
 
     private LazyDataModel model;
 
     public BookController() {
         getAllBooks();
         model = new BookListLazyModel();
+        selectedBook = new Book();
     }
 
     public LazyDataModel getModel() {
@@ -78,7 +80,9 @@ public class BookController implements Serializable {
     public void updateBook() {
         try {
             Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            if (!addMode)
             session.update(selectedBook);
+            else session.save(selectedBook);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,6 +102,11 @@ public class BookController implements Serializable {
         this.selectedLetter = selectedLetter;
         this.selectedAllBooks = selectedAllBooks;
     }
+
+    public void switchAddMode(){
+        addMode = !addMode;
+    }
+
 
     /*
      *   Getters and Setters
@@ -144,5 +153,13 @@ public class BookController implements Serializable {
 
     public void setSelectedBook(Book selectedBook) {
         this.selectedBook = selectedBook;
+    }
+
+    public boolean isAddMode() {
+        return addMode;
+    }
+
+    public void setAddMode(boolean addMode) {
+        this.addMode = addMode;
     }
 }
